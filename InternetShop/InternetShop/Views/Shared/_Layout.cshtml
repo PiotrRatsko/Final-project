@@ -1,1 +1,4 @@
-﻿@RenderBody()
+﻿@await Html.PartialAsync("ScriptsPartial")
+@await Html.PartialAsync("MetatagsPartial")
+@await Html.PartialAsync("CssPartial")
+@RenderBody()
