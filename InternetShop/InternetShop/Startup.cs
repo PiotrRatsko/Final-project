@@ -31,6 +31,7 @@ namespace InternetShop
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                //endpoints.MapControllerRoute("products", "/{controller=Products}/{action=Index}/{id?}");
             });
         }
     }
