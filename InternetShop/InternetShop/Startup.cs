@@ -14,8 +14,9 @@ namespace InternetShop
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews()
-                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
+            //services.AddControllersWithViews()
+            //    .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
+            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -31,7 +32,6 @@ namespace InternetShop
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-                //endpoints.MapControllerRoute("products", "/{controller=Products}/{action=Index}/{id?}");
             });
         }
     }
