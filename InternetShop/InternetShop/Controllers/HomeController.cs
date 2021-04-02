@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using InternetShop.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,14 @@ namespace InternetShop.Controllers
 {
     public class HomeController : Controller
     {
+        ItemContext _context;
+        public HomeController(ItemContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
-            return View();
+            return View(_context);
         }
     }
 }

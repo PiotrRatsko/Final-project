@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model InternetShop.Models.ItemContext
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     @await Html.PartialAsync("MetatagsPartial")
@@ -8,7 +10,7 @@
 <body>
     @await Html.PartialAsync("BottomBarPartial")
     @await Html.PartialAsync("NavBarPartial")
-    <!-- Featured Product Start -->
+    <!-- Moto Product Start -->
     <div class="featured-product product">
         <div class="container-fluid">
             <div class="section-header">
@@ -18,14 +20,7 @@
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Product Name</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
+                            <a href="#">@Model.Motos[0].Name</a>
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
@@ -47,13 +42,6 @@
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
@@ -75,13 +63,6 @@
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
@@ -103,13 +84,6 @@
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
@@ -131,13 +105,6 @@
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
@@ -158,8 +125,8 @@
             </div>
         </div>
     </div>
-    <!-- Featured Product End -->
-    <!-- Recent Product Start -->
+    <!-- Moto Product End -->
+    <!-- Sushi Product Start -->
     <div class="recent-product product">
         <div class="container-fluid">
             <div class="section-header">
@@ -170,13 +137,6 @@
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
@@ -198,13 +158,6 @@
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
@@ -226,13 +179,6 @@
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
@@ -254,13 +200,6 @@
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
@@ -282,13 +221,6 @@
                     <div class="product-item">
                         <div class="product-title">
                             <a href="#">Product Name</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
                         </div>
                         <div class="product-image">
                             <a href="product-detail.html">
@@ -309,7 +241,7 @@
             </div>
         </div>
     </div>
-    <!-- Recent Product End -->
+    <!-- Sushi Product End -->
     @await Html.PartialAsync("BrandPartial")
     @await Html.PartialAsync("FooterPartial")
     <!-- Back to Top -->
