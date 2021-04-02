@@ -14,7 +14,7 @@ namespace InternetShop
             {
                 context.Motos.Add(new Moto() { Id = new Guid("bf5274b4-e9ec-41b5-b5d8-017306911f57"), Brand = "BMW", Name = "BMW1", Picter = "bmw_bmw1.png", Price = 123 });
                 context.Motos.Add(new Moto() { Id = new Guid("a5b45769-e11a-4e3c-b4f5-8425e1d942cb"), Brand = "Honda", Name = "Honda1", Picter = "honda_honda1.jpg", Price = 99 });
-                context.Motos.Add(new Moto() { Id = new Guid("0355ca00-14a7-4f76-a205-3b8a4789ddb7"), Brand = "Minsk", Name = "Minsk1", Picter = "minsk_minsk1.jpg", Price = 54 });
+                context.Motos.Add(new Moto() { Id = new Guid("0355ca00-14a7-4f76-a205-3b8a4789ddb7"), Brand = "Minsk", Name = "Minsk1", Picter = "minsk_minsk1.png", Price = 54 });
             }
 
             if (!context.Sushis.Any())
