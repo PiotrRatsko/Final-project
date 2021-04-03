@@ -1,4 +1,5 @@
-﻿<!-- Side Bar Start -->
+﻿@model InternetShop.Models.ItemContext
+<!-- Side Bar Start -->
 <div class="col-lg-4 sidebar">
     <div class="sidebar-widget category">
         <h2 class="title">Category</h2>
@@ -59,7 +60,7 @@
     <div class="sidebar-widget brands">
         <h2 class="title">Our Brands</h2>
         <ul>
-            <li><a href="#">BMW </a><span>@Model.Motos.Where(i => i.Brand.Equals("BMW",StringComparison.OrdinalIgnoreCase)).Count()</span></li>
+            <li><a href="#">BMW </a><span>@Model.Motos.Where(i => i.Brand.Equals("BMW", StringComparison.OrdinalIgnoreCase)).Count()</span></li>
             <li><a href="#">Honda </a><span>@Model.Motos.Where(i => i.Brand.Equals("Honda", StringComparison.OrdinalIgnoreCase)).Count()</span></li>
             <li><a href="#">Minsk </a><span>@Model.Motos.Where(i => i.Brand.Equals("Minsk", StringComparison.OrdinalIgnoreCase)).Count()</span></li>
             <li><a href="#">SushiVesla</a><span>@Model.Sushis.Where(i => i.Brand.Equals("SushiVesla", StringComparison.OrdinalIgnoreCase)).Count()</span></li>

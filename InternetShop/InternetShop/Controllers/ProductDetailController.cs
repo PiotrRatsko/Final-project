@@ -1,5 +1,6 @@
 ﻿using InternetShop.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace InternetShop.Controllers
 {
@@ -11,8 +12,9 @@ namespace InternetShop.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(Guid guid)
         {
+            ViewBag.Product = _context.GetProductById(guid);
             return View(_context);
         }
     }

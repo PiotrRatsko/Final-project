@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model InternetShop.Models.ItemContext
+<!DOCTYPE html>
 <html lang="en">
 <head>
     @await Html.PartialAsync("MetatagsPartial")
@@ -23,7 +24,7 @@
                                 <a href="#">@moto.Name</a>
                             </div>
                             <div class="product-image">
-                                <a href="productdetail">
+                                <a href="productdetail?guid=@moto.Id">
                                     <img src="img/@moto.Picter" alt="Product Image">
                                 </a>
                             </div>
@@ -53,7 +54,7 @@
                                 <a href="#">@sushi.Name</a>
                             </div>
                             <div class="product-image">
-                                <a href="productdetail">
+                                <a href="productdetail?guid=@sushi.Id">
                                     <img src="img/@sushi.Picter" alt="Product Image">
                                 </a>
                             </div>
