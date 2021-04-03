@@ -7,7 +7,7 @@ namespace InternetShop.Models
 {
     public class ItemContext
     {
-        public List<IItem> Motos { get; set; } = new List<IItem>();
-        public List<IItem> Sushis { get; set; } = new List<IItem>();
+        public List<Moto> Motos { get; set; } = new List<Moto>();
+        public List<Sushi> Sushis { get; set; } = new List<Sushi>();
     }
 }

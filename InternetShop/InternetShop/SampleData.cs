@@ -1,8 +1,10 @@
 ﻿using InternetShop.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace InternetShop
 {
@@ -10,22 +12,52 @@ namespace InternetShop
     {
         public static void Initialize(ItemContext context)
         {
-            if (!context.Motos.Any())
+            Stream fs = null;
+            try
             {
-                context.Motos.Add(new Moto() { Id = new Guid("bf5274b4-e9ec-41b5-b5d8-017306911f57"), Brand = "BMW", Name = "BMW1", Picter = "bmw_bmw1.png", Price = 123 });
-                context.Motos.Add(new Moto() { Id = new Guid("a5b45769-e11a-4e3c-b4f5-8425e1d942cb"), Brand = "Honda", Name = "Honda1", Picter = "honda_honda1.jpg", Price = 99 });
-                context.Motos.Add(new Moto() { Id = new Guid("0355ca00-14a7-4f76-a205-3b8a4789ddb7"), Brand = "Minsk", Name = "Minsk1", Picter = "minsk_minsk1.png", Price = 54 });
-                context.Motos.Add(new Moto() { Id = new Guid("0355ca00-14a7-4f76-a205-3b8a4789ddb7"), Brand = "Minsk", Name = "Minsk1", Picter = "minsk_minsk1.png", Price = 54 });
-                context.Motos.Add(new Moto() { Id = new Guid("0355ca00-14a7-4f76-a205-3b8a4789ddb7"), Brand = "Minsk", Name = "Minsk1", Picter = "minsk_minsk1.png", Price = 54 });
+                fs = new FileStream("SampleData.json", FileMode.OpenOrCreate);
+                ItemContext obj = JsonSerializer.DeserializeAsync<ItemContext>(fs).Result;
+
+                foreach (var item in obj.Motos)
+                {
+                    ValidateItem(item);
+                }
+
+                foreach (var item in obj.Sushis)
+                {
+                    ValidateItem(item);
+                }
+
+                if (!context.Motos.Any())
+                {
+                    context.Motos = obj.Motos;
+                }
+
+                if (!context.Sushis.Any())
+                {
+                    context.Sushis = obj.Sushis;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Context was not initialized, {ex}");
+            }
+            finally
+            {
+                fs.Dispose();
             }
 
-            if (!context.Sushis.Any())
+        }
+        private static void ValidateItem(IItem item)
+        {
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(item);
+            if (!Validator.TryValidateObject(item, context, results, true))
             {
-                context.Sushis.Add(new Sushi() { Id = new Guid("6e0129e1-27bd-4f2c-8c0b-0696b9cc622a"), Brand = "Sushivesla", Name = "Chuka", Picter = "chuka_chuka1.png", Price = 2 });
-                context.Sushis.Add(new Sushi() { Id = new Guid("81336f76-f597-48d8-b9a6-5fbfa1686bf6"), Brand = "Sushitime", Name = "Ika", Picter = "ika_ika1.png", Price = 3 });
-                context.Sushis.Add(new Sushi() { Id = new Guid("0c02fb93-bf4c-45c3-a1d4-1dcb69e153b1"), Brand = "TokiNY", Name = "Tobica", Picter = "tobica_tobica1.png", Price = 4 });
-                context.Sushis.Add(new Sushi() { Id = new Guid("0c02fb93-bf4c-45c3-a1d4-1dcb69e153b1"), Brand = "TokiNY", Name = "Tobica", Picter = "tobica_tobica1.png", Price = 4 });
-                context.Sushis.Add(new Sushi() { Id = new Guid("0c02fb93-bf4c-45c3-a1d4-1dcb69e153b1"), Brand = "TokiNY", Name = "Tobica", Picter = "tobica_tobica1.png", Price = 4 });
+                foreach (var error in results)
+                {
+                    throw new Exception(error.ErrorMessage);
+                }
             }
         }
     }
