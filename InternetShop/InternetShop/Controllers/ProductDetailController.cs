@@ -7,8 +7,8 @@ namespace InternetShop.Controllers
 
     public class ProductDetailController : Controller
     {
-        ItemContext _context;
-        public ProductDetailController(ItemContext context)
+        StoreContext _context;
+        public ProductDetailController(StoreContext context)
         {
             _context = context;
         }

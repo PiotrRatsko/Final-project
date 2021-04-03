@@ -16,7 +16,7 @@ namespace InternetShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
-            services.AddSingleton<ItemContext>();
+            services.AddSingleton<StoreContext>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

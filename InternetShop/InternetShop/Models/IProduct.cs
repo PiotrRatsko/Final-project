@@ -2,7 +2,7 @@
 
 namespace InternetShop.Models
 {
-    public interface IItem
+    public interface IProduct
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

@@ -10,13 +10,13 @@ namespace InternetShop
 {
     internal static class SampleData
     {
-        public static void Initialize(ItemContext context)
+        public static void Initialize(StoreContext context)
         {
             Stream fs = null;
             try
             {
                 fs = new FileStream("SampleData.json", FileMode.OpenOrCreate);
-                ItemContext obj = JsonSerializer.DeserializeAsync<ItemContext>(fs).Result;
+                StoreContext obj = JsonSerializer.DeserializeAsync<StoreContext>(fs).Result;
 
                 foreach (var item in obj.Motos)
                 {
@@ -48,7 +48,7 @@ namespace InternetShop
             }
 
         }
-        private static void ValidateItem(IItem item)
+        private static void ValidateItem(IProduct item)
         {
             var results = new List<ValidationResult>();
             var context = new ValidationContext(item);

@@ -5,8 +5,8 @@ namespace InternetShop.Controllers
 {
     public class HomeController : Controller
     {
-        ItemContext _context;
-        public HomeController(ItemContext context)
+        StoreContext _context;
+        public HomeController(StoreContext context)
         {
             _context = context;
         }
