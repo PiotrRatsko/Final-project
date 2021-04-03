@@ -11,7 +11,10 @@ namespace InternetShop.Models
 
         public IProduct GetProductById(Guid guid)
         {
-            return Motos.Where(moto => moto.Id.Equals(guid)).FirstOrDefault();
+            var moto = Motos.Where(moto => moto.Id.Equals(guid)).FirstOrDefault();
+            if (moto == null) return Sushis.Where(moto => moto.Id.Equals(guid)).FirstOrDefault();
+            else
+                return moto;
         }
     }
 }
