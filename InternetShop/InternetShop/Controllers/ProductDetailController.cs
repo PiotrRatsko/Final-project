@@ -1,4 +1,5 @@
 ﻿using InternetShop.Models;
+using InternetShop.Service;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -7,15 +8,15 @@ namespace InternetShop.Controllers
 
     public class ProductDetailController : Controller
     {
-        StoreContext _context;
-        public ProductDetailController(StoreContext context)
+        readonly ProductService _service;
+        public ProductDetailController(ProductService service)
         {
-            _context = context;
+            _service = service;
         }
         public IActionResult Index(Guid guid)
         {
-            ViewBag.Product = _context.GetProductById(guid);
-            return View(_context);
+            ViewBag.Product = _service.GetProductById(guid);
+            return View(_service);
         }
     }
 }

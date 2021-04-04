@@ -1,4 +1,4 @@
-﻿@model InternetShop.Models.StoreContext
+﻿@model InternetShop.Service.ProductService
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +16,7 @@
                 <h1>Moto</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
-                @foreach (var moto in Model.Motos)
+                @foreach (var moto in Model.Products.Where(prd =>prd.Category.Equals("moto",StringComparison.OrdinalIgnoreCase)))
                 {
                     <div class="col-lg-3">
                         <div class="product-item">
@@ -46,7 +46,7 @@
                 <h1>Sushi</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
-                @foreach (var sushi in Model.Sushis)
+                @foreach (var sushi in Model.Products.Where(prd => prd.Category.Equals("sushi", StringComparison.OrdinalIgnoreCase)))
                 {
                     <div class="col-lg-3">
                         <div class="product-item">

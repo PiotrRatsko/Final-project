@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace InternetShop.Models
 {
-    public class Sushi : IProduct
+    public class Product : IProduct
     {
         [Required]
         public Guid Id { get; set; }
@@ -15,5 +15,7 @@ namespace InternetShop.Models
         public string Brand { get; set; }
         [Required]
         public string Picter { get; set; }
+        [Required]
+        public string Category { get; set; }
     }
 }

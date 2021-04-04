@@ -1,4 +1,5 @@
 using InternetShop.Models;
+using InternetShop.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,7 +17,7 @@ namespace InternetShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
-            services.AddSingleton<StoreContext>();
+            services.AddSingleton<ProductService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

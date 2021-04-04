@@ -9,5 +9,6 @@ namespace InternetShop.Models
         public string Brand { get; set; }
         public int Price { get; set; }
         public string Picter { get; set; }
+        public string Category { get; set; }
     }
 }
