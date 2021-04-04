@@ -13,9 +13,9 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index(string category, string price)
         {
-            if (!string.IsNullOrEmpty(category))
+            if (!string.IsNullOrEmpty(category) || !string.IsNullOrEmpty(price))
             {
-                ViewBag.Products = _service.GetProductByCategory(category);
+                ViewBag.Products = _service.GetFilteredProducts(category, price);
             }
             else
             {

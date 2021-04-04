@@ -1,4 +1,5 @@
 ﻿using InternetShop.Models;
+using InternetShop.Service.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,24 @@ namespace InternetShop.Service
             return Products.Where(prd => prd.Id.Equals(guid)).FirstOrDefault();
         }
 
-        public List<Product> GetProductByCategory(string category)
+        public List<Product> GetFilteredProducts(string category, string price)
         {
-            return Products.Where(prd => prd.Category.Equals(category,StringComparison.OrdinalIgnoreCase)).ToList();
+            List<Product> prod = Products.Select(i => i).ToList();
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                prod = Products.Where(prd => prd.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(price))
+            {
+                switch (price)
+                {
+                    case Price.LowPrice: return prod.Where(prd => prd.Price <= 100).ToList();
+                    case Price.HighPrice: return prod.Where(prd => prd.Price > 100).ToList();
+                }
+            }
+            return prod;
         }
     }
 }
