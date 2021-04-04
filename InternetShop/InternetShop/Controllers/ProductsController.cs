@@ -1,9 +1,6 @@
 ﻿using InternetShop.Service;
+using InternetShop.Service.Constants;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InternetShop.Controllers
 {
@@ -14,18 +11,20 @@ namespace InternetShop.Controllers
         {
             _service = service;
         }
-        public IActionResult Index(string category)
+        public IActionResult Index(string category, string price)
         {
             if (!string.IsNullOrEmpty(category))
             {
                 ViewBag.Products = _service.GetProductByCategory(category);
-                ViewData["Category"] = category;
             }
             else
             {
                 ViewBag.Products = _service.Products;
-                ViewData["Category"] = "All categories";
+
             }
+            ViewData["Category"] = string.IsNullOrEmpty(category) ? Category.AllCategories : category;
+            ViewData["Price"] = string.IsNullOrEmpty(price) ? Price.AllPrices : price;
+
             return View(_service);
         }
     }

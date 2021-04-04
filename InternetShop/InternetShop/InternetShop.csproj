@@ -17,6 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Service\Constants\Price.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\lib\easing\easing.js" />
     <None Include="wwwroot\lib\easing\easing.min.js" />
     <None Include="wwwroot\lib\slick\config.rb" />
