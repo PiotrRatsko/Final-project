@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace InternetShop.Models
 {
-    public class Product : IProduct
+    public class Product
     {
         [Required]
         public Guid Id { get; set; }

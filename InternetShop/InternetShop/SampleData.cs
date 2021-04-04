@@ -43,7 +43,7 @@ namespace InternetShop
             }
 
         }
-        private static void ValidateItem(IProduct item)
+        private static void ValidateItem(Product item)
         {
             var results = new List<ValidationResult>();
             var context = new ValidationContext(item);

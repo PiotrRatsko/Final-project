@@ -14,8 +14,18 @@ namespace InternetShop.Controllers
         {
             _service = service;
         }
-        public IActionResult Index()
+        public IActionResult Index(string category)
         {
+            if (!string.IsNullOrEmpty(category))
+            {
+                ViewBag.Products = _service.GetProductByCategory(category);
+                ViewData["Category"] = category;
+            }
+            else
+            {
+                ViewBag.Products = _service.Products;
+                ViewData["Category"] = "All categories";
+            }
             return View(_service);
         }
     }
