@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="product-price">
                                         <h3><span>$</span>@item.Price</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <a class="btn" href="@Url.Action("Add2Cart", "Products", new {guid = @item.Id, category = @ViewData["Category"], price=@ViewData["Price"], brand=@ViewData["Brand"] })"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,7 @@
 ﻿using InternetShop.Service;
 using InternetShop.Constants;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace InternetShop.Controllers
 {
@@ -22,6 +23,12 @@ namespace InternetShop.Controllers
             ViewData["Brand"] = brand;
 
             return View(_service);
+        }
+
+        public IActionResult Add2Cart(Guid guid, string category, string price, string brand)
+        {
+            _service.AddToCart(guid);
+            return RedirectToAction("Index", "Products", new { category, price, brand });
         }
     }
 }

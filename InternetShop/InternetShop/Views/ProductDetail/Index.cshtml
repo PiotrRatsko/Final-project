@@ -32,7 +32,7 @@
                                     <h4>Quantity: <span>1</span></h4>
                                 </div>
                                 <div class="action">
-                                    <a class="btn" href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                                    <a class="btn" href="@Url.Action("Add2Cart", "ProductDetail", new {guid = @ViewBag.Product.Id })"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
                                 </div>
                             </div>
                         </div>

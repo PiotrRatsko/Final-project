@@ -18,5 +18,11 @@ namespace InternetShop.Controllers
             ViewBag.Product = _service.GetProductById(guid);
             return View(_service);
         }
+
+        public IActionResult Add2Cart(Guid guid)
+        {
+            _service.AddToCart(guid);
+            return RedirectToAction("Index", "ProductDetail", new { guid = guid });
+        }
     }
 }
