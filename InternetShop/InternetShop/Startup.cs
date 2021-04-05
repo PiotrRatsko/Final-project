@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace InternetShop
 {
@@ -11,7 +12,14 @@ namespace InternetShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
-            services.AddSingleton<IProductService, ProductService>();
+            //services.AddDistributedMemoryCache();
+            //services.AddSession(options =>
+            //{
+            //    options.IdleTimeout = TimeSpan.FromMinutes(20);
+            //    options.Cookie.HttpOnly = true;
+            //    options.Cookie.IsEssential = true;
+            //});
+
             services.AddSingleton<ProductService>();
             //services.AddSingleton<OrderService>();
         }
@@ -25,6 +33,7 @@ namespace InternetShop
 
             app.UseRouting();
             app.UseStaticFiles();
+            //app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

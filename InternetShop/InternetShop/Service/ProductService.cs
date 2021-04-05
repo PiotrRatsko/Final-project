@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace InternetShop.Service
 {
-    public class ProductService : IProductService
+    public class ProductService
     {
         public List<Product> Products { get; set; } = new List<Product>();
 
