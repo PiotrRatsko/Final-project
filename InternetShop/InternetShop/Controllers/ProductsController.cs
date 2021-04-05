@@ -1,16 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using InternetShop.Service;
+using InternetShop.Constants;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InternetShop.Controllers
 {
     public class ProductsController : Controller
     {
-        public IActionResult Index()
+        readonly ProductService _service;
+        public ProductsController(ProductService service)
         {
-            return View();
+            _service = service;
+        }
+        public IActionResult Index(string category, string price, string brand)
+        {
+            if (!string.IsNullOrEmpty(category) || !string.IsNullOrEmpty(price) || !string.IsNullOrEmpty(brand))
+                ViewBag.Products = _service.GetFilteredProducts(category, price, brand);
+            else ViewBag.Products = _service.Products;
+
+            ViewData["Category"] = category;
+            ViewData["Price"] = price;
+            ViewData["Brand"] = brand;
+
+            return View(_service);
         }
     }
 }

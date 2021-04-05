@@ -1,21 +1,10 @@
-﻿<!-- Side Bar Start -->
+﻿@model InternetShop.Service.ProductService
+@using InternetShop.Constants
+<!-- Side Bar Start -->
 <div class="col-lg-4 sidebar">
-    <div class="sidebar-widget category">
-        <h2 class="title">Category</h2>
-        <nav class="navbar bg-light">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-child"></i>Moto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-female"></i>Sushi</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
     <div class="sidebar-widget widget-slider">
         <div class="sidebar-slider normal-slider">
-            @foreach (var item in Model.Motos)
+            @foreach (var item in Model.Products)
             {
                 <div class="col-lg-3">
                     <div class="product-item">
@@ -23,26 +12,7 @@
                             <a href="#">@item.Name</a>
                         </div>
                         <div class="product-image">
-                            <a href="productdetail">
-                                <img src="img/@item.Picter" alt="Product Image">
-                            </a>
-                        </div>
-                        <div class="product-price">
-                            <h3><span>$</span>@item.Price</h3>
-                            <a class="btn" href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                        </div>
-                    </div>
-                </div>
-            }
-            @foreach (var item in Model.Sushis)
-            {
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">@item.Name</a>
-                        </div>
-                        <div class="product-image">
-                            <a href="productdetail">
+                            <a href="productdetail?guid=@item.Id">
                                 <img src="img/@item.Picter" alt="Product Image">
                             </a>
                         </div>
@@ -57,15 +27,15 @@
     </div>
 
     <div class="sidebar-widget brands">
-        <h2 class="title">Our Brands</h2>
-        <ul>
-            <li><a href="#">BMW </a><span>@Model.Motos.Where(i => i.Brand.Equals("BMW",StringComparison.OrdinalIgnoreCase)).Count()</span></li>
-            <li><a href="#">Honda </a><span>@Model.Motos.Where(i => i.Brand.Equals("Honda", StringComparison.OrdinalIgnoreCase)).Count()</span></li>
-            <li><a href="#">Minsk </a><span>@Model.Motos.Where(i => i.Brand.Equals("Minsk", StringComparison.OrdinalIgnoreCase)).Count()</span></li>
-            <li><a href="#">SushiVesla</a><span>@Model.Sushis.Where(i => i.Brand.Equals("SushiVesla", StringComparison.OrdinalIgnoreCase)).Count()</span></li>
-            <li><a href="#">SushiTime </a><span>@Model.Sushis.Where(i => i.Brand.Equals("SushiTime", StringComparison.OrdinalIgnoreCase)).Count()</span></li>
-            <li><a href="#">TokiNY</a><span>@Model.Sushis.Where(i => i.Brand.Equals("TokiNY", StringComparison.OrdinalIgnoreCase)).Count()</span></li>
-        </ul>
+        <h>
+            Our Brands:
+            @Brand.BMW (@Model.Products.Where(i => i.Brand.Equals("BMW", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.Honda (@Model.Products.Where(i => i.Brand.Equals("Honda", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.Minsk (@Model.Products.Where(i => i.Brand.Equals("Minsk", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.Sushivesla (@Model.Products.Where(i => i.Brand.Equals("SushiVesla", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.Sushitime (@Model.Products.Where(i => i.Brand.Equals("SushiTime", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.TokiNY (@Model.Products.Where(i => i.Brand.Equals("TokiNY", StringComparison.OrdinalIgnoreCase)).Count())
+        </h>
     </div>
 </div>
 <!-- Side Bar End -->

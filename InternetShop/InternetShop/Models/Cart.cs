@@ -7,6 +7,6 @@ namespace InternetShop.Models
 {
     public class Cart
     {
-        public Dictionary<IItem, int> Items { get; set; }
+        public Dictionary<Product, int> Items { get; set; }
     }
 }

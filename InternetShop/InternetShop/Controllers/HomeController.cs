@@ -1,18 +1,19 @@
 ﻿using InternetShop.Models;
+using InternetShop.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InternetShop.Controllers
 {
     public class HomeController : Controller
     {
-        ItemContext _context;
-        public HomeController(ItemContext context)
+        readonly ProductService _service;
+        public HomeController(ProductService service)
         {
-            _context = context;
+            _service = service;
         }
         public IActionResult Index()
         {
-            return View(_context);
+            return View(_service);
         }
     }
 }

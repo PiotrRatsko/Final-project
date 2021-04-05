@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model InternetShop.Service.ProductService
+<!DOCTYPE html>
 <html lang="en">
 <head>
     @await Html.PartialAsync("MetatagsPartial")
@@ -15,7 +16,7 @@
                 <h1>Moto</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
-                @foreach (var moto in Model.Motos)
+                @foreach (var moto in Model.Products.Where(prd =>prd.Category.Equals("moto",StringComparison.OrdinalIgnoreCase)))
                 {
                     <div class="col-lg-3">
                         <div class="product-item">
@@ -23,7 +24,7 @@
                                 <a href="#">@moto.Name</a>
                             </div>
                             <div class="product-image">
-                                <a href="productdetail">
+                                <a href="productdetail?guid=@moto.Id">
                                     <img src="img/@moto.Picter" alt="Product Image">
                                 </a>
                             </div>
@@ -45,7 +46,7 @@
                 <h1>Sushi</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
-                @foreach (var sushi in Model.Sushis)
+                @foreach (var sushi in Model.Products.Where(prd => prd.Category.Equals("sushi", StringComparison.OrdinalIgnoreCase)))
                 {
                     <div class="col-lg-3">
                         <div class="product-item">
@@ -53,7 +54,7 @@
                                 <a href="#">@sushi.Name</a>
                             </div>
                             <div class="product-image">
-                                <a href="productdetail">
+                                <a href="productdetail?guid=@sushi.Id">
                                     <img src="img/@sushi.Picter" alt="Product Image">
                                 </a>
                             </div>

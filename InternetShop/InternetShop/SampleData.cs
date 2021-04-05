@@ -1,4 +1,5 @@
 ﻿using InternetShop.Models;
+using InternetShop.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,32 +11,26 @@ namespace InternetShop
 {
     internal static class SampleData
     {
-        public static void Initialize(ItemContext context)
+        public static void Initialize(ProductService service)
         {
+            //service.Products.Add(new Product { Brand = "4", Category = "45", Id = new Guid(), Name = "555", Picter = "55566", Price = 77 });
+            //service.Products.Add(new Product { Brand = "18", Category = "77", Id = new Guid(), Name = "444", Picter = "44444", Price = 44 });
+            //string kk = JsonSerializer.Serialize(service);
+
             Stream fs = null;
             try
             {
                 fs = new FileStream("SampleData.json", FileMode.OpenOrCreate);
-                ItemContext obj = JsonSerializer.DeserializeAsync<ItemContext>(fs).Result;
+                ProductService obj = JsonSerializer.DeserializeAsync<ProductService>(fs).Result;
 
-                foreach (var item in obj.Motos)
+                foreach (var item in obj.Products)
                 {
                     ValidateItem(item);
                 }
 
-                foreach (var item in obj.Sushis)
+                if (!service.Products.Any())
                 {
-                    ValidateItem(item);
-                }
-
-                if (!context.Motos.Any())
-                {
-                    context.Motos = obj.Motos;
-                }
-
-                if (!context.Sushis.Any())
-                {
-                    context.Sushis = obj.Sushis;
+                    service.Products = obj.Products;
                 }
             }
             catch (Exception ex)
@@ -48,7 +43,7 @@ namespace InternetShop
             }
 
         }
-        private static void ValidateItem(IItem item)
+        private static void ValidateItem(Product item)
         {
             var results = new List<ValidationResult>();
             var context = new ValidationContext(item);
