@@ -15,7 +15,7 @@ namespace InternetShop.Service
             return Products.Where(prd => prd.Id.Equals(guid)).FirstOrDefault();
         }
 
-        public List<Product> GetFilteredProducts(string category, string price)
+        public List<Product> GetFilteredProducts(string category, string price, string brand)
         {
             List<Product> prod = Products.Select(i => i).ToList();
 
@@ -28,10 +28,16 @@ namespace InternetShop.Service
             {
                 switch (price)
                 {
-                    case Price.LowPrice: return prod.Where(prd => prd.Price <= 100).ToList();
-                    case Price.HighPrice: return prod.Where(prd => prd.Price > 100).ToList();
+                    case Price.LowPrice: prod = prod.Where(prd => prd.Price <= 100).ToList(); break;
+                    case Price.HighPrice: prod = prod.Where(prd => prd.Price > 100).ToList(); break;
                 }
             }
+
+            if (!string.IsNullOrEmpty(brand))
+            {
+                prod = prod.Where(prd => prd.Brand.Equals(brand, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
             return prod;
         }
     }

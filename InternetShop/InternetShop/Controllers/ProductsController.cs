@@ -11,19 +11,15 @@ namespace InternetShop.Controllers
         {
             _service = service;
         }
-        public IActionResult Index(string category, string price)
+        public IActionResult Index(string category, string price, string brand)
         {
-            if (!string.IsNullOrEmpty(category) || !string.IsNullOrEmpty(price))
-            {
-                ViewBag.Products = _service.GetFilteredProducts(category, price);
-            }
-            else
-            {
-                ViewBag.Products = _service.Products;
+            if (!string.IsNullOrEmpty(category) || !string.IsNullOrEmpty(price) || !string.IsNullOrEmpty(brand))
+                ViewBag.Products = _service.GetFilteredProducts(category, price, brand);
+            else ViewBag.Products = _service.Products;
 
-            }
             ViewData["Category"] = category;
             ViewData["Price"] = price;
+            ViewData["Brand"] = brand;
 
             return View(_service);
         }
