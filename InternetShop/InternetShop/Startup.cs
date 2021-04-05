@@ -21,7 +21,7 @@ namespace InternetShop
             //});
 
             services.AddSingleton<ProductService>();
-            //services.AddSingleton<OrderService>();
+            services.AddSingleton<CartService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

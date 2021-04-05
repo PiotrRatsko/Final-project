@@ -9,6 +9,7 @@ namespace InternetShop.Service
     public class ProductService
     {
         public List<Product> Products { get; set; } = new List<Product>();
+        public Cart Cart { get; set; } = new Cart();
 
         public Product GetProductById(Guid guid)
         {
@@ -40,5 +41,15 @@ namespace InternetShop.Service
 
             return prod;
         }
+
+        public void AddToCart(Guid guid)
+        {
+            Product prd = GetProductById(guid);
+            if (!Cart.CartItems.ContainsKey(prd))
+            {
+                Cart.CartItems.Add(prd, 1);
+            }
+        }
+        
     }
 }

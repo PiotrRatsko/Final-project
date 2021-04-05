@@ -16,7 +16,7 @@
                 <h1>Moto</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
-                @foreach (var moto in Model.Products.Where(prd =>prd.Category.Equals("moto",StringComparison.OrdinalIgnoreCase)))
+                @foreach (var moto in Model.Products.Where(prd => prd.Category.Equals("moto", StringComparison.OrdinalIgnoreCase)))
                 {
                     <div class="col-lg-3">
                         <div class="product-item">
@@ -30,7 +30,7 @@
                             </div>
                             <div class="product-price">
                                 <h3><span>$</span>@moto.Price</h3>
-                                <a class="btn" href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                                <a class="btn" href="@Url.Action("Add2Cart", "Home", new {guid = "bf5274b4-e9ec-41b5-b5d8-017306911f57" })"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
                             </div>
                         </div>
                     </div>
