@@ -22,8 +22,8 @@ namespace InternetShop.Controllers
                 ViewBag.Products = _service.Products;
 
             }
-            ViewData["Category"] = string.IsNullOrEmpty(category) ? Category.AllCategories : category;
-            ViewData["Price"] = string.IsNullOrEmpty(price) ? Price.AllPrices : price;
+            ViewData["Category"] = category;
+            ViewData["Price"] = price;
 
             return View(_service);
         }

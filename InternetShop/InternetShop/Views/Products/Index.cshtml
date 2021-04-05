@@ -20,19 +20,23 @@
                             <div class="product-view-top">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="product-search">
-                                            <input type="email" value="Search">
-                                            <button><i class="fa fa-search"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
                                         <div class="product-short">
                                             <div class="dropdown">
-                                                <div class="dropdown-toggle" data-toggle="dropdown">@ViewData["Category"]</div>
+                                                @{string sort1 = null;
+                                                    if (string.IsNullOrEmpty(ViewData["Category"]?.ToString()))
+                                                    {
+                                                        sort1 = "All categories";
+                                                    }
+                                                    else
+                                                    {
+                                                        sort1 = ViewData["Category"].ToString();
+                                                    }
+                                                    <div class="dropdown-toggle" data-toggle="dropdown">@sort1</div>
+                                                }
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a href="products?category=@string.Empty" class="dropdown-item">@Category.AllCategories</a>
-                                                    <a href="products?category=@Category.Moto" class="dropdown-item">@Category.Moto</a>
-                                                    <a href="products?category=@Category.Sushi" class="dropdown-item">@Category.Sushi</a>
+                                                    <a href="products?category=@string.Empty&price=@ViewData["Price"]" class="dropdown-item">All categories</a>
+                                                    <a href="products?category=@Category.Moto&price=@ViewData["Price"]" class="dropdown-item">@Category.Moto</a>
+                                                    <a href="products?category=@Category.Sushi&price=@ViewData["Price"]" class="dropdown-item">@Category.Sushi</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -40,11 +44,21 @@
                                     <div class="col-md-4">
                                         <div class="product-price-range">
                                             <div class="dropdown">
-                                                <div class="dropdown-toggle" data-toggle="dropdown">@ViewData["Price"]</div>
+                                                @{string sort2 = null;
+                                                    if (string.IsNullOrEmpty(ViewData["Price"]?.ToString()))
+                                                    {
+                                                        sort2 = "All prices";
+                                                    }
+                                                    else
+                                                    {
+                                                        sort2 = ViewData["Price"].ToString();
+                                                    }
+                                                    <div class="dropdown-toggle" data-toggle="dropdown">@sort2</div>
+                                                }
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a href="products?price=@string.Empty" class="dropdown-item">@Price.AllPrices</a>
-                                                    <a href="products?price=@Price.LowPrice" class="dropdown-item">@Price.LowPrice</a>
-                                                    <a href="products?price=@Price.HighPrice" class="dropdown-item">@Price.HighPrice</a>
+                                                    <a href="products?category=@ViewData["Category"]&price=@string.Empty" class="dropdown-item">All prices</a>
+                                                    <a href="products?category=@ViewData["Category"]&price=@Price.LowPrice" class="dropdown-item">@Price.LowPrice</a>
+                                                    <a href="products?category=@ViewData["Category"]&price=@Price.HighPrice" class="dropdown-item">@Price.HighPrice</a>
                                                 </div>
                                             </div>
                                         </div>
