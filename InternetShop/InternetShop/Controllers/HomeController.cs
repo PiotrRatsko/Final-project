@@ -19,6 +19,7 @@ namespace InternetShop.Controllers
 
         public IActionResult Add2Cart(Guid guid)
         {
+            _service.AddToCart(guid);
             return RedirectToAction("Index", "Home");
         }
     }
