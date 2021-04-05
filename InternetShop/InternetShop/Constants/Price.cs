@@ -1,4 +1,4 @@
-﻿namespace InternetShop.Service.Constants
+﻿namespace InternetShop.Constants
 {
     public class Price
     {

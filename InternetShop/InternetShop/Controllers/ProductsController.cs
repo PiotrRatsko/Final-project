@@ -1,5 +1,5 @@
 ﻿using InternetShop.Service;
-using InternetShop.Service.Constants;
+using InternetShop.Constants;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InternetShop.Controllers

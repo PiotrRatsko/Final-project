@@ -1,5 +1,5 @@
-﻿using InternetShop.Models;
-using InternetShop.Service.Constants;
+﻿using InternetShop.Constants;
+using InternetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

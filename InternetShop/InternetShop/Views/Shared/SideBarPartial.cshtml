@@ -1,4 +1,5 @@
 ﻿@model InternetShop.Service.ProductService
+@using InternetShop.Constants
 <!-- Side Bar Start -->
 <div class="col-lg-4 sidebar">
     <div class="sidebar-widget widget-slider">
@@ -26,13 +27,14 @@
     </div>
 
     <div class="sidebar-widget brands">
-        <h>Our Brands:
-                BMW(@Model.Products.Where(i => i.Brand.Equals("BMW", StringComparison.OrdinalIgnoreCase)).Count()),
-                Honda(@Model.Products.Where(i => i.Brand.Equals("Honda", StringComparison.OrdinalIgnoreCase)).Count()),
-                Minsk(@Model.Products.Where(i => i.Brand.Equals("Minsk", StringComparison.OrdinalIgnoreCase)).Count()),
-                SushiVesla(@Model.Products.Where(i => i.Brand.Equals("SushiVesla", StringComparison.OrdinalIgnoreCase)).Count()),
-                SushiTime(@Model.Products.Where(i => i.Brand.Equals("SushiTime", StringComparison.OrdinalIgnoreCase)).Count()),
-                TokiNY(@Model.Products.Where(i => i.Brand.Equals("TokiNY", StringComparison.OrdinalIgnoreCase)).Count())
+        <h>
+            Our Brands:
+            @Brand.BMW (@Model.Products.Where(i => i.Brand.Equals("BMW", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.Honda (@Model.Products.Where(i => i.Brand.Equals("Honda", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.Minsk (@Model.Products.Where(i => i.Brand.Equals("Minsk", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.Sushivesla (@Model.Products.Where(i => i.Brand.Equals("SushiVesla", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.Sushitime (@Model.Products.Where(i => i.Brand.Equals("SushiTime", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.TokiNY (@Model.Products.Where(i => i.Brand.Equals("TokiNY", StringComparison.OrdinalIgnoreCase)).Count())
         </h>
     </div>
 </div>

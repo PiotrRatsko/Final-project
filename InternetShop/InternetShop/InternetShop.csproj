@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Service\Constants\Price.cs" />
+    <Content Include="Constants\Price.cs" />
   </ItemGroup>
 
   <ItemGroup>
