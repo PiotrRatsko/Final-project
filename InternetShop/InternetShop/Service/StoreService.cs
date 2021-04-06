@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace InternetShop.Service
 {
-    public class ProductService
+    public class StoreService
     {
         public List<Product> Products { get; set; } = new List<Product>();
         public Cart Cart { get; set; } = new Cart();
@@ -50,7 +50,5 @@ namespace InternetShop.Service
                 Cart.CartItems.Add(prd, 1);
             }
         }
-        
-
     }
 }

@@ -6,8 +6,8 @@ namespace InternetShop.Controllers
 {
     public class CartController : Controller
     {
-        readonly ProductService _service;
-        public CartController(ProductService service)
+        readonly StoreService _service;
+        public CartController(StoreService service)
         {
             _service = service;
         }

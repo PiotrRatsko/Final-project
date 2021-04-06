@@ -7,8 +7,8 @@ namespace InternetShop.Controllers
 {
     public class ProductsController : Controller
     {
-        readonly ProductService _service;
-        public ProductsController(ProductService service)
+        readonly StoreService _service;
+        public ProductsController(StoreService service)
         {
             _service = service;
         }
@@ -24,7 +24,6 @@ namespace InternetShop.Controllers
 
             return View(_service);
         }
-
         public IActionResult Add2Cart(Guid guid, string category, string price, string brand)
         {
             _service.AddToCart(guid);

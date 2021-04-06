@@ -5,11 +5,10 @@ using System;
 
 namespace InternetShop.Controllers
 {
-
     public class ProductDetailController : Controller
     {
-        readonly ProductService _service;
-        public ProductDetailController(ProductService service)
+        readonly StoreService _service;
+        public ProductDetailController(StoreService service)
         {
             _service = service;
         }

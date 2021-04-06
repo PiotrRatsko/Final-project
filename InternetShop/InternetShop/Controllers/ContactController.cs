@@ -5,8 +5,8 @@ namespace InternetShop.Controllers
 {
     public class ContactController : Controller
     {
-        readonly ProductService _service;
-        public ContactController(ProductService service)
+        readonly StoreService _service;
+        public ContactController(StoreService service)
         {
             _service = service;
         }

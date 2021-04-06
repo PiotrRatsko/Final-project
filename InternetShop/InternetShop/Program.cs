@@ -1,4 +1,3 @@
-using InternetShop.Models;
 using InternetShop.Service;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +13,7 @@ namespace InternetShop
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var service = services.GetRequiredService<ProductService>();
+                var service = services.GetRequiredService<StoreService>();
                 SampleData.Initialize(service);
             }
             host.Run();

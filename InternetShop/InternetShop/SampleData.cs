@@ -11,17 +11,13 @@ namespace InternetShop
 {
     internal static class SampleData
     {
-        public static void Initialize(ProductService service)
+        public static void Initialize(StoreService service)
         {
-            //service.Products.Add(new Product { Brand = "4", Category = "45", Id = new Guid(), Name = "555", Picter = "55566", Price = 77 });
-            //service.Products.Add(new Product { Brand = "18", Category = "77", Id = new Guid(), Name = "444", Picter = "44444", Price = 44 });
-            //string kk = JsonSerializer.Serialize(service);
-
             Stream fs = null;
             try
             {
                 fs = new FileStream("SampleData.json", FileMode.OpenOrCreate);
-                ProductService obj = JsonSerializer.DeserializeAsync<ProductService>(fs).Result;
+                StoreService obj = JsonSerializer.DeserializeAsync<StoreService>(fs).Result;
 
                 foreach (var item in obj.Products)
                 {
@@ -41,7 +37,6 @@ namespace InternetShop
             {
                 fs.Dispose();
             }
-
         }
         private static void ValidateItem(Product item)
         {
