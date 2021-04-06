@@ -5,9 +5,11 @@ namespace InternetShop.Controllers
 {
     public class CartController : Controller
     {
-        readonly CartService _service;
-        public CartController(CartService service)
+        readonly CartService _cartService;
+        readonly ProductService _service;
+        public CartController(ProductService service, CartService cartService)
         {
+            _cartService = cartService;
             _service = service;
         }
         public IActionResult Index()
