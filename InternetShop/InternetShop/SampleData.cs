@@ -11,13 +11,13 @@ namespace InternetShop
 {
     internal static class SampleData
     {
-        public static void Initialize(StoreService service)
+        public static void Initialize(Store service)
         {
             Stream fs = null;
             try
             {
                 fs = new FileStream("SampleData.json", FileMode.OpenOrCreate);
-                StoreService obj = JsonSerializer.DeserializeAsync<StoreService>(fs).Result;
+                Store obj = JsonSerializer.DeserializeAsync<Store>(fs).Result;
 
                 foreach (var item in obj.Products)
                 {

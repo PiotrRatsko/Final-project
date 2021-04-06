@@ -8,21 +8,20 @@ namespace InternetShop.Service
 {
     public class StoreService
     {
-        public List<Product> Products { get; set; } = new List<Product>();
-        public Cart Cart { get; set; } = new Cart();
+        public Store Store { get; set; } = new Store();
 
         public Product GetProductById(Guid guid)
         {
-            return Products.Where(prd => prd.Id.Equals(guid)).FirstOrDefault();
+            return Store.Products.Where(prd => prd.Id.Equals(guid)).FirstOrDefault();
         }
 
         public List<Product> GetFilteredProducts(string category, string price, string brand)
         {
-            List<Product> prod = Products.Select(i => i).ToList();
+            List<Product> prod = Store.Products.Select(i => i).ToList();
 
             if (!string.IsNullOrEmpty(category))
             {
-                prod = Products.Where(prd => prd.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
+                prod = Store.Products.Where(prd => prd.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
             if (!string.IsNullOrEmpty(price))
@@ -45,9 +44,9 @@ namespace InternetShop.Service
         public void AddToCart(Guid guid)
         {
             Product prd = GetProductById(guid);
-            if (!Cart.CartItems.ContainsKey(prd))
+            if (!Store.Cart.CartItems.ContainsKey(prd))
             {
-                Cart.CartItems.Add(prd, 1);
+                Store.Cart.CartItems.Add(prd, 1);
             }
         }
     }

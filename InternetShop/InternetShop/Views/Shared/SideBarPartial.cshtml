@@ -3,7 +3,7 @@
 <div class="col-lg-4 sidebar">
     <div class="sidebar-widget widget-slider">
         <div class="sidebar-slider normal-slider">
-            @foreach (var item in Model.Products)
+            @foreach (var item in Model.Store.Products)
             {
                 <div class="col-lg-3">
                     <div class="product-item">
@@ -27,12 +27,12 @@
     <div class="sidebar-widget brands">
         <h>
             Our Brands:
-            @Brand.BMW (@Model.Products.Where(i => i.Brand.Equals("BMW", StringComparison.OrdinalIgnoreCase)).Count()),
-            @Brand.Honda (@Model.Products.Where(i => i.Brand.Equals("Honda", StringComparison.OrdinalIgnoreCase)).Count()),
-            @Brand.Minsk (@Model.Products.Where(i => i.Brand.Equals("Minsk", StringComparison.OrdinalIgnoreCase)).Count()),
-            @Brand.Sushivesla (@Model.Products.Where(i => i.Brand.Equals("SushiVesla", StringComparison.OrdinalIgnoreCase)).Count()),
-            @Brand.Sushitime (@Model.Products.Where(i => i.Brand.Equals("SushiTime", StringComparison.OrdinalIgnoreCase)).Count()),
-            @Brand.TokiNY (@Model.Products.Where(i => i.Brand.Equals("TokiNY", StringComparison.OrdinalIgnoreCase)).Count())
+            @Brand.BMW (@Model.Store.Products.Where(i => i.Brand.Equals("BMW", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.Honda (@Model.Store.Products.Where(i => i.Brand.Equals("Honda", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.Minsk (@Model.Store.Products.Where(i => i.Brand.Equals("Minsk", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.Sushivesla (@Model.Store.Products.Where(i => i.Brand.Equals("SushiVesla", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.Sushitime (@Model.Store.Products.Where(i => i.Brand.Equals("SushiTime", StringComparison.OrdinalIgnoreCase)).Count()),
+            @Brand.TokiNY (@Model.Store.Products.Where(i => i.Brand.Equals("TokiNY", StringComparison.OrdinalIgnoreCase)).Count())
         </h>
     </div>
 </div>

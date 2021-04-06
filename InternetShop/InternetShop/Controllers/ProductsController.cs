@@ -16,7 +16,7 @@ namespace InternetShop.Controllers
         {
             if (!string.IsNullOrEmpty(category) || !string.IsNullOrEmpty(price) || !string.IsNullOrEmpty(brand))
                 ViewBag.Products = _service.GetFilteredProducts(category, price, brand);
-            else ViewBag.Products = _service.Products;
+            else ViewBag.Products = _service.Store.Products;
 
             ViewData["Category"] = category;
             ViewData["Price"] = price;
