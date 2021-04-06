@@ -12,7 +12,7 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index()
         {
-            return View(_service);
+            return View(_service.Store);
         }
     }
 }

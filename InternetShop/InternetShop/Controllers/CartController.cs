@@ -14,7 +14,7 @@ namespace InternetShop.Controllers
         public IActionResult Index()
         {
             ViewBag.Products = _service.Store.Cart.CartItems;
-            return View(_service);
+            return View(_service.Store);
         }
 
         public IActionResult PlusQuantity(Guid guid)

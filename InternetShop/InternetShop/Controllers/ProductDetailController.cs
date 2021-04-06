@@ -15,7 +15,7 @@ namespace InternetShop.Controllers
         public IActionResult Index(Guid guid)
         {
             ViewBag.Product = _service.GetProductById(guid);
-            return View(_service);
+            return View(_service.Store);
         }
 
         public IActionResult Add2Cart(Guid guid)

@@ -22,7 +22,7 @@ namespace InternetShop.Controllers
             ViewData["Price"] = price;
             ViewData["Brand"] = brand;
 
-            return View(_service);
+            return View(_service.Store);
         }
         public IActionResult Add2Cart(Guid guid, string category, string price, string brand)
         {
