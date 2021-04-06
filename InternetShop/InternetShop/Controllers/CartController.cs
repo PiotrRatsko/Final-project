@@ -14,10 +14,10 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index()
         {
-            //foreach (var item in _service.Cart.CartItems)
-            //{
-            //    var i = item;
-            //}
+            foreach (var item in _service.Cart.CartItems)
+            {
+                var i = item;
+            }
             ViewBag.Products = _service.Cart.CartItems;
             return View(_service);
         }

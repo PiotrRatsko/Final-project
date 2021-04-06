@@ -33,18 +33,20 @@
                                             <td>
                                                 <div class="img">
                                                     <a href="#"><img src="img/@item.Key.Picter" alt="Image"></a>
-                                                    <p>Product Name</p>
+                                                    <p>@item.Key.Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>@item.Key.Price</td>
                                             <td>
                                                 <div class="qty">
                                                     <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                                    <input type="text" value="1">
+                                                    <input type="text" value="@item.Value">
                                                     <button class="btn-plus"><i class="fa fa-plus"></i></button>
+                                                    <p>PPPPPPP       <span>myVal</span></p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            @{ int total = @item.Key.Price * @item.Value;}
+                                            <td>@total</td>
                                             <td><button><i class="fa fa-trash"></i></button></td>
                                         </tr>
                                     </tbody>
