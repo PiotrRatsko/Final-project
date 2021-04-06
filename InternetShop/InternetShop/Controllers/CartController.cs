@@ -19,22 +19,19 @@ namespace InternetShop.Controllers
 
         public IActionResult PlusQuantity(Guid guid)
         {
-            _service.Store.Cart.CartItems[_service.GetProductById(guid)]++;
+            _service.PlusQuantity(guid);
             return RedirectToAction("Index", "Cart");
         }
 
         public IActionResult MinusQuantity(Guid guid)
         {
-            if (_service.Store.Cart.CartItems[_service.GetProductById(guid)] != 1)
-            {
-                _service.Store.Cart.CartItems[_service.GetProductById(guid)]--;
-            }
+            _service.MinusQuantity(guid);
             return RedirectToAction("Index", "Cart");
         }
 
-        public IActionResult RemoveProduct(Guid guid)
+        public IActionResult RemoveProductFromCard(Guid guid)
         {
-            _service.Store.Cart.CartItems.Remove(_service.GetProductById(guid));
+            _service.RemoveProductFromCard(guid);
             return RedirectToAction("Index", "Cart");
         }
     }

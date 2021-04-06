@@ -14,14 +14,10 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index(string category, string price, string brand)
         {
-            if (!string.IsNullOrEmpty(category) || !string.IsNullOrEmpty(price) || !string.IsNullOrEmpty(brand))
-                ViewBag.Products = _service.GetFilteredProducts(category, price, brand);
-            else ViewBag.Products = _service.Store.Products;
-
+            ViewBag.Products = _service.GetFilteredProducts(category, price, brand);
             ViewData["Category"] = category;
             ViewData["Price"] = price;
             ViewData["Brand"] = brand;
-
             return View(_service.Store);
         }
         public IActionResult Add2Cart(Guid guid, string category, string price, string brand)

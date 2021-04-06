@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace InternetShop.Service
 {
-    public class StoreService
+    public class StoreService : IStoreService
     {
         public Store Store { get; set; } = new Store();
 
@@ -48,6 +48,21 @@ namespace InternetShop.Service
             {
                 Store.Cart.CartItems.Add(prd, 1);
             }
+        }
+
+        public void PlusQuantity(Guid guid)
+        {
+            Store.Cart.CartItems[GetProductById(guid)]++;
+        }
+
+        public void MinusQuantity(Guid guid)
+        {
+            if (Store.Cart.CartItems[GetProductById(guid)] != 1) Store.Cart.CartItems[GetProductById(guid)]--;
+        }
+
+        public void RemoveProductFromCard(Guid guid)
+        {
+            Store.Cart.CartItems.Remove(GetProductById(guid));
         }
     }
 }
