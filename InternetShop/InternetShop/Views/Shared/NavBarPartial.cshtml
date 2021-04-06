@@ -1,4 +1,5 @@
-﻿<!-- Nav Bar Start -->
+﻿@model InternetShop.Service.ProductService
+<!-- Nav Bar Start -->
 <div class="nav">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -14,7 +15,9 @@
                     <a href="contact" class="nav-item nav-link">Contact Us</a>
                 </div>
                 <div class="navbar-nav ml-auto">
-                    <a href="cart" class="btn cart"> <i class="fa fa-shopping-cart"></i> <span>(0)</span> </a>
+                    <a href="cart" class="btn cart">
+                        <i class="fa fa-shopping-cart"></i><span>(@Model.Cart.TotalQuantity)</span>
+                    </a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
                         <div class="dropdown-menu">

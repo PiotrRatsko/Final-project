@@ -1,6 +1,7 @@
 ﻿using InternetShop.Models;
 using InternetShop.Service;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace InternetShop.Controllers
 {
@@ -14,6 +15,12 @@ namespace InternetShop.Controllers
         public IActionResult Index()
         {
             return View(_service);
+        }
+
+        public IActionResult Add2Cart(Guid guid)
+        {
+            _service.AddToCart(guid);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

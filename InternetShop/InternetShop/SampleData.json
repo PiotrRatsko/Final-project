@@ -25,7 +25,7 @@
       "Category": "moto"
     },
     {
-      "Id": "0355ca00-14a7-4f76-a205-3b8a4789ddb7",
+      "Id": "0355ca00-14a7-4f76-a205-3b8a4789ddb8",
       "Name": "Minsk1",
       "Brand": "Minsk",
       "Price": 120,
@@ -33,7 +33,7 @@
       "Category": "moto"
     },
     {
-      "Id": "0355ca00-14a7-4f76-a205-3b8a4789ddb7",
+      "Id": "0355ca00-14a7-4f76-a205-3b8a4789ddb9",
       "Name": "Minsk1",
       "Brand": "Minsk",
       "Price": 100,
@@ -65,7 +65,7 @@
       "Category": "sushi"
     },
     {
-      "Id": "0c02fb93-bf4c-45c3-a1d4-1dcb69e153b1",
+      "Id": "0c02fb93-bf4c-45c3-a1d4-1dcb69e153b2",
       "Name": "Tobica",
       "Brand": "TokiNY",
       "Price": 4,
@@ -73,7 +73,7 @@
       "Category": "sushi"
     },
     {
-      "Id": "0c02fb93-bf4c-45c3-a1d4-1dcb69e153b1",
+      "Id": "0c02fb93-bf4c-45c3-a1d4-1dcb69e153b3",
       "Name": "Tobica",
       "Brand": "TokiNY",
       "Price": 100,
