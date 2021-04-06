@@ -1157,11 +1157,11 @@ h2 {
         border: none;
     }
 
-        .product-detail .product-content .quantity button.btn-minus {
+        .product-detail .product-content .quantity btn-minus {
             border-radius: 4px 0 0 4px;
         }
 
-        .product-detail .product-content .quantity button.btn-plus {
+        .product-detail .product-content .quantity btn-plus {
             border-radius: 0 4px 4px 0;
         }
 
@@ -1487,7 +1487,7 @@ h2 {
                 margin: 0;
             }
 
-        .cart-page .table .qty {
+        .cart-page .table .a {
             display: inline-block;
             width: 100px;
             font-size: 0;
@@ -1504,15 +1504,15 @@ h2 {
             border-radius: 4px;
         }
 
-            .cart-page .table button.btn-minus {
+            .cart-page .table btn-minus {
                 border-radius: 4px 0 0 4px;
             }
 
-            .cart-page .table button.btn-plus {
+            .cart-page .table btn-plus {
                 border-radius: 0 4px 4px 0;
             }
 
-            .cart-page .table button.btn-cart {
+            .cart-page .table btn-cart {
                 width: auto;
             }
 
@@ -1695,11 +1695,11 @@ h2 {
             border-radius: 4px;
         }
 
-            .wishlist-page .table button.btn-minus {
+            .wishlist-page .table btn-minus {
                 border-radius: 4px 0 0 4px;
             }
 
-            .wishlist-page .table button.btn-plus {
+            .wishlist-page .table btn-plus {
                 border-radius: 0 4px 4px 0;
             }
 

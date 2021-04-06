@@ -9,5 +9,12 @@ namespace InternetShop.Models
     {
         public Dictionary<Product, int> CartItems { get; set; } = new Dictionary<Product, int>();
         public int TotalQuantity => CartItems.Count;
+        public int TotalSum => CartItems.Select(x => (x.Key.Price * x.Value)).Sum();
+
+        //void ggg()
+        //{
+        //    int kkk = CartItems.Select(x => (x.Key.Price * x.Value)).Sum();
+        //}
+        
     }
 }
