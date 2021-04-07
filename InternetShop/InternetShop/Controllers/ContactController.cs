@@ -5,7 +5,7 @@ namespace InternetShop.Controllers
 {
     public class ContactController : Controller
     {
-        readonly StoreService _service;
+        readonly IStoreService _service;
         public ContactController(StoreService service)
         {
             _service = service;

@@ -13,8 +13,8 @@ namespace InternetShop
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var service = services.GetRequiredService<StoreService>().Store;
-                SampleData.Initialize(service);
+                var service = services.GetRequiredService<StoreService>();
+                SampleData.Initialize(service.Store);
             }
             host.Run();
         }

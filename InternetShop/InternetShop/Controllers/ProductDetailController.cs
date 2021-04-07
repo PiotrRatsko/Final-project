@@ -7,7 +7,7 @@ namespace InternetShop.Controllers
 {
     public class ProductDetailController : Controller
     {
-        readonly StoreService _service;
+        readonly IStoreService _service;
         public ProductDetailController(StoreService service)
         {
             _service = service;

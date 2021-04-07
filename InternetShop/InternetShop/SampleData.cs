@@ -11,7 +11,7 @@ namespace InternetShop
 {
     internal static class SampleData
     {
-        public static void Initialize(Store service)
+        public static void Initialize(Store store)
         {
             Stream fs = null;
             try
@@ -24,9 +24,9 @@ namespace InternetShop
                     ValidateItem(item);
                 }
 
-                if (!service.Products.Any())
+                if (!store.Products.Any())
                 {
-                    service.Products = obj.Products;
+                    store.Products = obj.Products;
                 }
             }
             catch (Exception ex)
