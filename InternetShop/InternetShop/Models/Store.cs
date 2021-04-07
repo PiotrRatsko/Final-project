@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using InternetShop.Domain.Entities;
+using System.Collections.Generic;
 
 namespace InternetShop.Models
 {

@@ -1,4 +1,5 @@
-using InternetShop.Service;
+using InternetShop.Domain;
+using InternetShop.Domain.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +12,9 @@ namespace InternetShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
-            services.AddSingleton<StoreService>();
+            //services.AddSingleton<StoreService>();
+            services.AddTransient<IStoreServiceRepository, StoreServiceRepository>();
+            services.AddSingleton<DataManager>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

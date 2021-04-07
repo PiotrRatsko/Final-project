@@ -1,18 +1,19 @@
-﻿using InternetShop.Service;
+﻿using InternetShop.Domain;
+using InternetShop.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InternetShop.Controllers
 {
     public class ContactController : Controller
     {
-        readonly IStoreService _service;
-        public ContactController(StoreService service)
+        readonly DataManager _dataManager;
+        public ContactController(DataManager dataManager)
         {
-            _service = service;
+            _dataManager = dataManager;
         }
         public IActionResult Index()
         {
-            return View(_service.Store);
+            return View(_dataManager.StoreService.Store);
         }
     }
 }

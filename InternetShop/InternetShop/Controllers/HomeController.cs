@@ -1,5 +1,6 @@
-﻿using InternetShop.Models;
-using InternetShop.Service;
+﻿using InternetShop.Domain;
+using InternetShop.Domain.Repositories;
+using InternetShop.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -7,19 +8,19 @@ namespace InternetShop.Controllers
 {
     public class HomeController : Controller
     {
-        readonly IStoreService _service;
-        public HomeController(StoreService service)
+        readonly DataManager _dataManager;
+        public HomeController(DataManager dataManager)
         {
-            _service = service;
+            _dataManager = dataManager;
         }
         public IActionResult Index()
         {
-            return View(_service.Store);
+            return View(_dataManager.StoreService.Store);
         }
 
         public IActionResult Add2Cart(Guid guid)
         {
-            _service.AddToCart(guid);
+            _dataManager.StoreService.AddToCart(guid);
             return RedirectToAction("Index", "Home");
         }
     }

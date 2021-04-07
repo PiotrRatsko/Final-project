@@ -1,12 +1,13 @@
 ﻿using InternetShop.Constants;
+using InternetShop.Domain.Entities;
 using InternetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace InternetShop.Service
+namespace InternetShop.Domain.Repositories
 {
-    public class StoreService : IStoreService
+    public class StoreServiceRepository : IStoreServiceRepository
     {
         public Store Store { get; set; } = new Store();
 

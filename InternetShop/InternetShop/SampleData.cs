@@ -1,5 +1,5 @@
-﻿using InternetShop.Models;
-using InternetShop.Service;
+﻿using InternetShop.Domain.Entities;
+using InternetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
