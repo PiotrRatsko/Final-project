@@ -1,0 +1,45 @@
+﻿@model InternetShop.Models.LoginModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @await Html.PartialAsync("MetatagsPartial")
+    @await Html.PartialAsync("CssPartial")
+</head>
+
+<body>
+    @await Html.PartialAsync("BrandPartial")
+    @*@await Html.PartialAsync("NavBarPartial")*@
+    <!-- Login Start -->
+    <div class="login">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="login-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>E-mail / Username</label>
+                                <input class="form-control" type="text" placeholder="E-mail">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Password</label>
+                                <input class="form-control" type="text" placeholder="Password">
+                            </div>
+                            <div class="col-md-12">
+                                <form action="@Url.Action("Index", "Home")">
+                                    <button class="btn">Submit</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login End -->
+    @await Html.PartialAsync("FooterPartial")
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    @await Html.PartialAsync("ScriptsPartial")
+</body>
+</html>
