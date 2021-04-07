@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace InternetShop.Models
+namespace InternetShop.Domain.Entities
 {
     public class Cart
     {
         public Dictionary<Product, int> CartItems { get; set; } = new Dictionary<Product, int>();
         public int TotalQuantity => CartItems.Count;
+        public int TotalSum => CartItems.Select(x => x.Key.Price * x.Value).Sum();
     }
 }

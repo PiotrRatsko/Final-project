@@ -1,28 +1,28 @@
-﻿using InternetShop.Models;
-using InternetShop.Service;
+﻿using InternetShop.Domain;
+using InternetShop.Domain.Repositories;
+using InternetShop.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace InternetShop.Controllers
 {
-
     public class ProductDetailController : Controller
     {
-        readonly ProductService _service;
-        public ProductDetailController(ProductService service)
+        readonly DataManager _dataManager;
+        public ProductDetailController(DataManager dataManager)
         {
-            _service = service;
+            _dataManager = dataManager;
         }
         public IActionResult Index(Guid guid)
         {
-            ViewBag.Product = _service.GetProductById(guid);
-            return View(_service);
+            ViewBag.Product = _dataManager.StoreService.GetProductById(guid);
+            return View(_dataManager.StoreService.Store);
         }
 
         public IActionResult Add2Cart(Guid guid)
         {
-            _service.AddToCart(guid);
-            return RedirectToAction("Index", "ProductDetail", new { guid = guid });
+            _dataManager.StoreService.AddToCart(guid);
+            return RedirectToAction("Index", "ProductDetail", new { guid });
         }
     }
 }

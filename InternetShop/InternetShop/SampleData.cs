@@ -1,5 +1,5 @@
-﻿using InternetShop.Models;
-using InternetShop.Service;
+﻿using InternetShop.Domain.Entities;
+using InternetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,26 +11,22 @@ namespace InternetShop
 {
     internal static class SampleData
     {
-        public static void Initialize(ProductService service)
+        public static void Initialize(Store store)
         {
-            //service.Products.Add(new Product { Brand = "4", Category = "45", Id = new Guid(), Name = "555", Picter = "55566", Price = 77 });
-            //service.Products.Add(new Product { Brand = "18", Category = "77", Id = new Guid(), Name = "444", Picter = "44444", Price = 44 });
-            //string kk = JsonSerializer.Serialize(service);
-
             Stream fs = null;
             try
             {
                 fs = new FileStream("SampleData.json", FileMode.OpenOrCreate);
-                ProductService obj = JsonSerializer.DeserializeAsync<ProductService>(fs).Result;
+                Store obj = JsonSerializer.DeserializeAsync<Store>(fs).Result;
 
                 foreach (var item in obj.Products)
                 {
                     ValidateItem(item);
                 }
 
-                if (!service.Products.Any())
+                if (!store.Products.Any())
                 {
-                    service.Products = obj.Products;
+                    store.Products = obj.Products;
                 }
             }
             catch (Exception ex)
@@ -41,7 +37,6 @@ namespace InternetShop
             {
                 fs.Dispose();
             }
-
         }
         private static void ValidateItem(Product item)
         {
