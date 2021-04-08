@@ -4,15 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InternetShop.Models
+namespace InternetShop.Domain.Entities
 {
     public class User
     {
-        [Required]
+        public int Id { get; set; }
         public string Email { get; set; }
 
-        [Required]
-        [UIHint("password")]
         public string Password { get; set; }
     }
 }

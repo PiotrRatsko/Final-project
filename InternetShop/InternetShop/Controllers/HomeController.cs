@@ -1,6 +1,7 @@
 ﻿using InternetShop.Domain;
 using InternetShop.Domain.Repositories;
 using InternetShop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -13,6 +14,13 @@ namespace InternetShop.Controllers
         {
             _dataManager = dataManager;
         }
+
+        //[Authorize]
+        //public IActionResult Index()
+        //{
+        //    return Content(User.Identity.Name);
+        //}
+
         public IActionResult Index()
         {
             return View(_dataManager.StoreService.Store);

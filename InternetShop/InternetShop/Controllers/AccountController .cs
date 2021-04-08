@@ -1,4 +1,5 @@
 ﻿using InternetShop.Domain;
+using InternetShop.Domain.Entities;
 using InternetShop.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -13,58 +14,61 @@ namespace InternetShop.Controllers
 {
     public class AccountController : Controller
     {
-        private UserManager db;
-        public AccountController(UserManager context)
+        readonly DataManager _dataManager;
+        public AccountController(DataManager dataManager)
         {
-            db = context;
+            _dataManager = dataManager;
         }
+
         [HttpGet]
         public IActionResult Login()
         {
-            return View();
+            return View(_dataManager.StoreService.Store);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginModel model)
+        public async Task<IActionResult> Login(LoginModel loginModel)
         {
             if (ModelState.IsValid)
             {
-                User user = db.Users.FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
+                User user = _dataManager.StoreService.Store.Users.FirstOrDefault(u => u.Email == loginModel.Email && u.Password == loginModel.Password);
                 if (user != null)
                 {
-                    await Authenticate(model.Email); // аутентификация
+                    await Authenticate(loginModel.Email); // аутентификация
 
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
-            return View(model);
+            return View(_dataManager.StoreService.Store);
         }
         [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            return View(_dataManager.StoreService.Store);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterModel model)
+        public async Task<IActionResult> Register(RegisterModel registerModel)
         {
             if (ModelState.IsValid)
             {
-                User user = db.Users.FirstOrDefault(u => u.Email == model.Email);
+                User user = _dataManager.StoreService.Store.Users.FirstOrDefault(u => u.Email == registerModel.Email);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    db.Users.Add(new User { Email = model.Email, Password = model.Password });
+                    _dataManager.StoreService.Store.Users.Add(new User { Email = registerModel.Email, Password = registerModel.Password });
 
-                    await Authenticate(model.Email); // аутентификация
+                    await Authenticate(registerModel.Email); // аутентификация
 
                     return RedirectToAction("Index", "Home");
                 }
                 else
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
-            return View(model);
+            return View(_dataManager.StoreService.Store);
         }
 
         private async Task Authenticate(string userName)

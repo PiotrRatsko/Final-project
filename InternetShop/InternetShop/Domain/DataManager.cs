@@ -10,6 +10,7 @@ namespace InternetShop.Domain
     {
         public IStoreServiceRepository StoreService { get; set; }
 
+
         public DataManager(IStoreServiceRepository storeService)
         {
             StoreService = storeService;
