@@ -15,6 +15,8 @@ namespace InternetShop.Controllers
     public class AccountController : Controller
     {
         readonly DataManager _dataManager;
+        readonly LoginModel _loginModel;
+        readonly RegisterModel _registerModel;
         public AccountController(DataManager dataManager)
         {
             _dataManager = dataManager;
@@ -23,13 +25,15 @@ namespace InternetShop.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View(_dataManager.StoreRepository.Store);
+            ViewBag.TotalQuantity = _dataManager.StoreRepository.Store.Cart.TotalQuantity;
+            return View(_loginModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
+            ViewBag.TotalQuantity = _dataManager.StoreRepository.Store.Cart.TotalQuantity;
             if (ModelState.IsValid)
             {
                 User user = _dataManager.StoreRepository.Store.Users.FirstOrDefault(u => u.Email == loginModel.Email && u.Password == loginModel.Password);
@@ -41,18 +45,20 @@ namespace InternetShop.Controllers
                 }
                 ModelState.AddModelError("", "Not valid password or/and e-mail");
             }
-            return View(_dataManager.StoreRepository.Store);
+            return View(_loginModel);
         }
         [HttpGet]
         public IActionResult Register()
         {
-            return View(_dataManager.StoreRepository.Store);
+            ViewBag.TotalQuantity = _dataManager.StoreRepository.Store.Cart.TotalQuantity;
+            return View(_registerModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel registerModel)
         {
+            ViewBag.TotalQuantity = _dataManager.StoreRepository.Store.Cart.TotalQuantity;
             if (ModelState.IsValid)
             {
                 User user = _dataManager.StoreRepository.Store.Users.FirstOrDefault(u => u.Email == registerModel.Email);
@@ -68,7 +74,7 @@ namespace InternetShop.Controllers
                 else
                     ModelState.AddModelError("", "Not valid password or/and e-mail");
             }
-            return View(_dataManager.StoreRepository.Store);
+            return View(_registerModel);
         }
 
         private async Task Authenticate(string userName)

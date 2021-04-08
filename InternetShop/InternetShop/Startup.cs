@@ -1,5 +1,6 @@
 using InternetShop.Domain;
 using InternetShop.Domain.Repositories;
+using InternetShop.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

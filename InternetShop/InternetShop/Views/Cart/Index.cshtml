@@ -36,7 +36,7 @@
                                             </td>
                                             @{ int total = @item.Key.Price * @item.Value;}
                                             <td>@total</td>
-                                            <td><a class="fa fa-trash" href="@Url.Action("RemoveProduct", "Cart", new {guid = item.Key.Id })"></a></td>
+                                            <td><a class="fa fa-trash" href="@Url.Action("RemoveProductFromCard", "Cart", new {guid = item.Key.Id })"></a></td>
                                         </tr>
                                     </tbody>
                                 }

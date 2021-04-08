@@ -13,6 +13,7 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index(string category, string price, string brand)
         {
+            ViewBag.TotalQuantity = _dataManager.StoreRepository.Store.Cart.TotalQuantity;
             ViewBag.Products = _dataManager.StoreRepository.GetFilteredProducts(category, price, brand);
             ViewData["Category"] = category;
             ViewData["Price"] = price;

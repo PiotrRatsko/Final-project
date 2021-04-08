@@ -18,6 +18,7 @@ namespace InternetShop.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
+            ViewBag.TotalQuantity = _dataManager.StoreRepository.Store.Cart.TotalQuantity;
             ViewBag.Products = _dataManager.StoreRepository.Store.Cart.CartItems;
             return View(_dataManager.StoreRepository.Store);
         }

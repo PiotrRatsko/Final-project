@@ -15,6 +15,7 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index(Guid guid)
         {
+            ViewBag.TotalQuantity = _dataManager.StoreRepository.Store.Cart.TotalQuantity;
             ViewBag.Product = _dataManager.StoreRepository.GetProductById(guid);
             return View(_dataManager.StoreRepository.Store);
         }
