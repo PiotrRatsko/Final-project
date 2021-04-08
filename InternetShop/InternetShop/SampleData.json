@@ -7,7 +7,7 @@
       "Price": 123,
       "Picter": "bmw_bmw1.png",
       "Category": "moto",
-      "Description": "Норм точилка"
+      "Description": "Norm tochilka"
     },
     {
       "Id": "a5b45769-e11a-4e3c-b4f5-8425e1d942cb",
@@ -16,7 +16,7 @@
       "Price": 99,
       "Picter": "honda_honda1.jpg",
       "Category": "moto",
-      "Description": "Девченкам нравится"
+      "Description": "Norm tochilka"
     },
     {
       "Id": "0355ca00-14a7-4f76-a205-3b8a4789ddb7",
@@ -25,7 +25,7 @@
       "Price": 54,
       "Picter": "minsk_minsk1.png",
       "Category": "moto",
-      "Description": "Лучший выбор"
+      "Description": "Norm tochilka"
     },
     {
       "Id": "0355ca00-14a7-4f76-a205-3b8a4789ddb8",
@@ -34,7 +34,7 @@
       "Price": 120,
       "Picter": "minsk_minsk1.png",
       "Category": "moto",
-      "Description": "Лучший парень на деревне"
+      "Description": "Norm tochilka"
     },
     {
       "Id": "0355ca00-14a7-4f76-a205-3b8a4789ddb9",
@@ -43,7 +43,7 @@
       "Price": 100,
       "Picter": "minsk_minsk1.png",
       "Category": "moto",
-      "Description": "Баланс скорости и отстойности"
+      "Description": "Norm tochilka"
     },
     {
       "Id": "6e0129e1-27bd-4f2c-8c0b-0696b9cc622a",
@@ -52,7 +52,7 @@
       "Price": 2,
       "Picter": "chuka_chuka1.png",
       "Category": "sushi",
-      "Description": "Самые дешевые суши в мире"
+      "Description": "Good and tasty"
     },
     {
       "Id": "81336f76-f597-48d8-b9a6-5fbfa1686bf6",
@@ -61,7 +61,7 @@
       "Price": 3,
       "Picter": "ika_ika1.png",
       "Category": "sushi",
-      "Description": "Бери больше"
+      "Description": "Good and tasty"
     },
     {
       "Id": "0c02fb93-bf4c-45c3-a1d4-1dcb69e153b1",
@@ -70,7 +70,7 @@
       "Price": 400,
       "Picter": "tobica_tobica1.png",
       "Category": "sushi",
-      "Description": "Понты дороже денег"
+      "Description": "Good and tasty"
     },
     {
       "Id": "0c02fb93-bf4c-45c3-a1d4-1dcb69e153b2",
@@ -79,7 +79,7 @@
       "Price": 4,
       "Picter": "tobica_tobica1.png",
       "Category": "sushi",
-      "Description": "Норм для студентов"
+      "Description": "Good and tasty"
     },
     {
       "Id": "0c02fb93-bf4c-45c3-a1d4-1dcb69e153b3",
@@ -88,7 +88,7 @@
       "Price": 100,
       "Picter": "tobica_tobica1.png",
       "Category": "sushi",
-      "Description": "Отлично сочетается с текилой"
+      "Description": "Good and tasty with Tekila"
     }
   ]
 }

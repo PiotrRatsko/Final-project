@@ -14,6 +14,10 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             ViewBag.Products = _dataManager.StoreRepository.Store.Cart.CartItems;
             return View(_dataManager.StoreRepository.Store);
         }

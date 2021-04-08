@@ -21,6 +21,10 @@ namespace InternetShop.Controllers
         }
         public IActionResult Add2Cart(Guid guid, string category, string price, string brand)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             _dataManager.StoreRepository.AddToCart(guid);
             return RedirectToAction("Index", "Products", new { category, price, brand });
         }

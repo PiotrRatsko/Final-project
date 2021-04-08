@@ -31,4 +31,3 @@ namespace InternetShop.Controllers
         }
     }
 }
-//User.Identity.Name
