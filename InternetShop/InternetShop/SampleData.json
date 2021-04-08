@@ -6,7 +6,8 @@
       "Brand": "BMW",
       "Price": 123,
       "Picter": "bmw_bmw1.png",
-      "Category": "moto"
+      "Category": "moto",
+      "Description": "Norm tochilka"
     },
     {
       "Id": "a5b45769-e11a-4e3c-b4f5-8425e1d942cb",
@@ -14,7 +15,8 @@
       "Brand": "Honda",
       "Price": 99,
       "Picter": "honda_honda1.jpg",
-      "Category": "moto"
+      "Category": "moto",
+      "Description": "Norm tochilka"
     },
     {
       "Id": "0355ca00-14a7-4f76-a205-3b8a4789ddb7",
@@ -22,7 +24,8 @@
       "Brand": "Minsk",
       "Price": 54,
       "Picter": "minsk_minsk1.png",
-      "Category": "moto"
+      "Category": "moto",
+      "Description": "Norm tochilka"
     },
     {
       "Id": "0355ca00-14a7-4f76-a205-3b8a4789ddb8",
@@ -30,7 +33,8 @@
       "Brand": "Minsk",
       "Price": 120,
       "Picter": "minsk_minsk1.png",
-      "Category": "moto"
+      "Category": "moto",
+      "Description": "Norm tochilka"
     },
     {
       "Id": "0355ca00-14a7-4f76-a205-3b8a4789ddb9",
@@ -38,7 +42,8 @@
       "Brand": "Minsk",
       "Price": 100,
       "Picter": "minsk_minsk1.png",
-      "Category": "moto"
+      "Category": "moto",
+      "Description": "Norm tochilka"
     },
     {
       "Id": "6e0129e1-27bd-4f2c-8c0b-0696b9cc622a",
@@ -46,7 +51,8 @@
       "Brand": "Sushivesla",
       "Price": 2,
       "Picter": "chuka_chuka1.png",
-      "Category": "sushi"
+      "Category": "sushi",
+      "Description": "Good and tasty"
     },
     {
       "Id": "81336f76-f597-48d8-b9a6-5fbfa1686bf6",
@@ -54,7 +60,8 @@
       "Brand": "Sushitime",
       "Price": 3,
       "Picter": "ika_ika1.png",
-      "Category": "sushi"
+      "Category": "sushi",
+      "Description": "Good and tasty"
     },
     {
       "Id": "0c02fb93-bf4c-45c3-a1d4-1dcb69e153b1",
@@ -62,7 +69,8 @@
       "Brand": "TokiNY",
       "Price": 400,
       "Picter": "tobica_tobica1.png",
-      "Category": "sushi"
+      "Category": "sushi",
+      "Description": "Good and tasty"
     },
     {
       "Id": "0c02fb93-bf4c-45c3-a1d4-1dcb69e153b2",
@@ -70,7 +78,8 @@
       "Brand": "TokiNY",
       "Price": 4,
       "Picter": "tobica_tobica1.png",
-      "Category": "sushi"
+      "Category": "sushi",
+      "Description": "Good and tasty"
     },
     {
       "Id": "0c02fb93-bf4c-45c3-a1d4-1dcb69e153b3",
@@ -78,7 +87,8 @@
       "Brand": "TokiNY",
       "Price": 100,
       "Picter": "tobica_tobica1.png",
-      "Category": "sushi"
+      "Category": "sushi",
+      "Description": "Good and tasty with Tekila"
     }
   ]
 }

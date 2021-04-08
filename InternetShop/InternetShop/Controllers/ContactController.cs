@@ -13,7 +13,7 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index()
         {
-            return View(_dataManager.StoreService.Store);
+            return View(_dataManager.StoreRepository.Store);
         }
     }
 }

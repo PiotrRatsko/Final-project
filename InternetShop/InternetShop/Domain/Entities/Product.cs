@@ -17,5 +17,7 @@ namespace InternetShop.Domain.Entities
         public string Picter { get; set; }
         [Required]
         public string Category { get; set; }
+        [Required]
+        public string Description { get; set; }
     }
 }

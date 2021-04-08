@@ -9,19 +9,29 @@
 
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav mr-auto">
-                    <a href="home" class="nav-item nav-link">Home</a>
-                    <a href="products" class="nav-item nav-link">Products</a>
-                    <a href="contact" class="nav-item nav-link">Contact Us</a>
+                    <a href="/home" class="nav-item nav-link">Home</a>
+                    <a href="/products" class="nav-item nav-link">Products</a>
+                    <a href="/contact" class="nav-item nav-link">Contact Us</a>
                 </div>
                 <div class="navbar-nav ml-auto">
-                    <a href="cart" class="btn cart">
+                    <a href="/cart" class="btn cart">
                         <i class="fa fa-shopping-cart"></i><span>(@Model.Cart.TotalQuantity)</span>
                     </a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">Login</a>
-                            <a href="#" class="dropdown-item">Register</a>
+                    <div class="navbar-nav ml-auto">
+                        <div class="nav-item dropdown">
+                            @{
+                                string text;
+                                if (User.Identity.IsAuthenticated)
+                                {
+                                    text = User.Identity.Name;
+                                } else text = "Login&Register";
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@text</a>
+                            }
+                            <div class="dropdown-menu">
+                                <a href="@Url.Action("Login", "Account")" class="dropdown-item">Login</a>
+                                <a href="@Url.Action("Register", "Account")" class="dropdown-item">Register</a>
+                                <a href="@Url.Action("Logout", "Account")" class="dropdown-item">Logout</a>
+                            </div>
                         </div>
                     </div>
                 </div>

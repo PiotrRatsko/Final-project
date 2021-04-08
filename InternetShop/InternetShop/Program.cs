@@ -1,5 +1,4 @@
 using InternetShop.Domain;
-using InternetShop.Domain.Repositories;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,7 +14,7 @@ namespace InternetShop
             {
                 var services = scope.ServiceProvider;
                 var service = services.GetRequiredService<DataManager>();
-                SampleData.Initialize(service.StoreService.Store);
+                SampleData.Initialize(service.StoreRepository.Store);
             }
             host.Run();
         }

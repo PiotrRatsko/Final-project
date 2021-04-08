@@ -14,25 +14,29 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index()
         {
-            ViewBag.Products = _dataManager.StoreService.Store.Cart.CartItems;
-            return View(_dataManager.StoreService.Store);
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            ViewBag.Products = _dataManager.StoreRepository.Store.Cart.CartItems;
+            return View(_dataManager.StoreRepository.Store);
         }
 
         public IActionResult PlusQuantity(Guid guid)
         {
-            _dataManager.StoreService.PlusQuantity(guid);
+            _dataManager.StoreRepository.PlusQuantity(guid);
             return RedirectToAction("Index", "Cart");
         }
 
         public IActionResult MinusQuantity(Guid guid)
         {
-            _dataManager.StoreService.MinusQuantity(guid);
+            _dataManager.StoreRepository.MinusQuantity(guid);
             return RedirectToAction("Index", "Cart");
         }
 
         public IActionResult RemoveProductFromCard(Guid guid)
         {
-            _dataManager.StoreService.RemoveProductFromCard(guid);
+            _dataManager.StoreRepository.RemoveProductFromCard(guid);
             return RedirectToAction("Index", "Cart");
         }
     }

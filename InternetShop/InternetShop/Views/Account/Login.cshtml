@@ -1,0 +1,32 @@
+﻿<body>
+    <!-- Login Start -->
+    <div class="login">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+
+                    <div class="login-form">
+                        <form asp-action="Login" asp-controller="Account" asp-anti-forgery="true">
+                            <div class="validation" asp-validation-summary="ModelOnly"></div>
+                            <div>
+                                <div class="col-md-6">
+                                    <label>Please login or register</label>
+                                    <input class="form-control" type="text" placeholder="E-mail" asp-for="@Model.loginModel.Email" />
+                                    <span asp-validation-for="@Model.loginModel.Email" />
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" placeholder="Password" asp-for="@Model.loginModel.Password" />
+                                    <span asp-validation-for="@Model.loginModel.Password" />
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="submit" value="Submit" class="btn btn-outline-dark" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login End -->
+</body>

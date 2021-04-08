@@ -1,11 +1,10 @@
 ﻿using InternetShop.Domain.Entities;
-using InternetShop.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
 
 namespace InternetShop
 {
@@ -13,29 +12,23 @@ namespace InternetShop
     {
         public static void Initialize(Store store)
         {
-            Stream fs = null;
+            string content;
             try
             {
-                fs = new FileStream("SampleData.json", FileMode.OpenOrCreate);
-                Store obj = JsonSerializer.DeserializeAsync<Store>(fs).Result;
+                using (StreamReader reader = File.OpenText(@"SampleData.json"))
+                    content = reader.ReadToEnd();
+                Store deserializedProduct = JsonConvert.DeserializeObject<Store>(content);
 
-                foreach (var item in obj.Products)
+                foreach (var item in deserializedProduct.Products)
                 {
                     ValidateItem(item);
                 }
 
-                if (!store.Products.Any())
-                {
-                    store.Products = obj.Products;
-                }
+               store.Products = deserializedProduct.Products.Select(i => i).ToList();
             }
             catch (Exception ex)
             {
                 throw new Exception($"Context was not initialized, {ex}");
-            }
-            finally
-            {
-                fs.Dispose();
             }
         }
         private static void ValidateItem(Product item)

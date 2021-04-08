@@ -15,13 +15,17 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index(Guid guid)
         {
-            ViewBag.Product = _dataManager.StoreService.GetProductById(guid);
-            return View(_dataManager.StoreService.Store);
+            ViewBag.Product = _dataManager.StoreRepository.GetProductById(guid);
+            return View(_dataManager.StoreRepository.Store);
         }
 
         public IActionResult Add2Cart(Guid guid)
         {
-            _dataManager.StoreService.AddToCart(guid);
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            _dataManager.StoreRepository.AddToCart(guid);
             return RedirectToAction("Index", "ProductDetail", new { guid });
         }
     }

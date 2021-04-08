@@ -1,11 +1,10 @@
 ﻿using InternetShop.Domain.Entities;
-using InternetShop.Models;
 using System;
 using System.Collections.Generic;
 
 namespace InternetShop.Domain.Repositories
 {
-    public interface IStoreServiceRepository
+    public interface IStoreRepository
     {
         public Store Store { get; set; }
         public Product GetProductById(Guid guid);
