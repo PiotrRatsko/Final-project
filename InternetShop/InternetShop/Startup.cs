@@ -17,7 +17,7 @@ namespace InternetShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
-            services.AddTransient<IStoreServiceRepository, StoreServiceRepository>();
+            services.AddTransient<IStoreRepository, StoreRepository>();
             services.AddSingleton<DataManager>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

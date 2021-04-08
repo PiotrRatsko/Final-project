@@ -1,7 +1,7 @@
-﻿using InternetShop.Domain.Entities;
+﻿using InternetShop.Models;
 using System.Collections.Generic;
 
-namespace InternetShop.Models
+namespace InternetShop.Domain.Entities
 {
     public class Store
     {

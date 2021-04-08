@@ -23,7 +23,7 @@ namespace InternetShop.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View(_dataManager.StoreService.Store);
+            return View(_dataManager.StoreRepository.Store);
         }
 
         [HttpPost]
@@ -32,7 +32,7 @@ namespace InternetShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = _dataManager.StoreService.Store.Users.FirstOrDefault(u => u.Email == loginModel.Email && u.Password == loginModel.Password);
+                User user = _dataManager.StoreRepository.Store.Users.FirstOrDefault(u => u.Email == loginModel.Email && u.Password == loginModel.Password);
                 if (user != null)
                 {
                     await Authenticate(loginModel.Email); // аутентификация
@@ -41,12 +41,12 @@ namespace InternetShop.Controllers
                 }
                 ModelState.AddModelError("", "Not valid password or/and e-mail");
             }
-            return View(_dataManager.StoreService.Store);
+            return View(_dataManager.StoreRepository.Store);
         }
         [HttpGet]
         public IActionResult Register()
         {
-            return View(_dataManager.StoreService.Store);
+            return View(_dataManager.StoreRepository.Store);
         }
 
         [HttpPost]
@@ -55,11 +55,11 @@ namespace InternetShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = _dataManager.StoreService.Store.Users.FirstOrDefault(u => u.Email == registerModel.Email);
+                User user = _dataManager.StoreRepository.Store.Users.FirstOrDefault(u => u.Email == registerModel.Email);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    _dataManager.StoreService.Store.Users.Add(new User { Email = registerModel.Email, Password = registerModel.Password });
+                    _dataManager.StoreRepository.Store.Users.Add(new User { Email = registerModel.Email, Password = registerModel.Password });
 
                     await Authenticate(registerModel.Email); // аутентификация
 
@@ -68,7 +68,7 @@ namespace InternetShop.Controllers
                 else
                     ModelState.AddModelError("", "Not valid password or/and e-mail");
             }
-            return View(_dataManager.StoreService.Store);
+            return View(_dataManager.StoreRepository.Store);
         }
 
         private async Task Authenticate(string userName)
@@ -87,7 +87,7 @@ namespace InternetShop.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

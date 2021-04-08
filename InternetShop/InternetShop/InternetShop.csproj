@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="SampleData.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <UpToDateCheckInput Remove="Views\Shared\CssPartial.cshtml" />
   </ItemGroup>
 
@@ -15,6 +19,12 @@
 
   <ItemGroup>
     <Content Include="Constants\Price.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="SampleData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

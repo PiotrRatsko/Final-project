@@ -9,18 +9,16 @@
                         <div class="validation" asp-validation-summary="ModelOnly"></div>
                         <div>
                             <div class="col-md-6">
-                                <label asp-for="@Model.registerModel.Email">E-mail</label>
+                                <label>Please register</label>
                                 <input class="form-control" type="text" asp-for="@Model.registerModel.Email" placeholder="E-mail"/>
                                 <span asp-validation-for="@Model.registerModel.Email" />
                             </div>
                             <div class="col-md-6">
-                                <label asp-for="@Model.registerModel.Password">Password</label>
                                 <input class="form-control" type="text" placeholder="Password" asp-for="@Model.registerModel.Password" />
                                 <span asp-validation-for="@Model.registerModel.Password" />
                             </div>
                             <div class="col-md-6">
-                                <label asp-for="@Model.registerModel.ConfirmPassword">Repeate Password</label>
-                                <input class="form-control" type="text" placeholder="Password" asp-for="@Model.registerModel.ConfirmPassword" />
+                                <input class="form-control" type="text" placeholder="ReEnter Password" asp-for="@Model.registerModel.ConfirmPassword" />
                                 <span asp-validation-for="@Model.registerModel.ConfirmPassword" />
                             </div>
 

@@ -13,15 +13,15 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index(string category, string price, string brand)
         {
-            ViewBag.Products = _dataManager.StoreService.GetFilteredProducts(category, price, brand);
+            ViewBag.Products = _dataManager.StoreRepository.GetFilteredProducts(category, price, brand);
             ViewData["Category"] = category;
             ViewData["Price"] = price;
             ViewData["Brand"] = brand;
-            return View(_dataManager.StoreService.Store);
+            return View(_dataManager.StoreRepository.Store);
         }
         public IActionResult Add2Cart(Guid guid, string category, string price, string brand)
         {
-            _dataManager.StoreService.AddToCart(guid);
+            _dataManager.StoreRepository.AddToCart(guid);
             return RedirectToAction("Index", "Products", new { category, price, brand });
         }
     }

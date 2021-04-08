@@ -15,21 +15,20 @@ namespace InternetShop.Controllers
             _dataManager = dataManager;
         }
 
-        //[Authorize]
-        //public IActionResult Index()
-        //{
-        //    return Content(User.Identity.Name);
-        //}
-
         public IActionResult Index()
         {
-            return View(_dataManager.StoreService.Store);
+            return View(_dataManager.StoreRepository.Store);
         }
 
         public IActionResult Add2Cart(Guid guid)
         {
-            _dataManager.StoreService.AddToCart(guid);
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            _dataManager.StoreRepository.AddToCart(guid);
             return RedirectToAction("Index", "Home");
         }
     }
 }
+//User.Identity.Name

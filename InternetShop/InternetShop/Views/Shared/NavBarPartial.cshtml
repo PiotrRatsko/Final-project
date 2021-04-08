@@ -19,10 +19,18 @@
                     </a>
                     <div class="navbar-nav ml-auto">
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Login & Register</a>
+                            @{
+                                string text;
+                                if (User.Identity.IsAuthenticated)
+                                {
+                                    text = User.Identity.Name;
+                                } else text = "Login&Register";
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@text</a>
+                            }
                             <div class="dropdown-menu">
                                 <a href="@Url.Action("Login", "Account")" class="dropdown-item">Login</a>
                                 <a href="@Url.Action("Register", "Account")" class="dropdown-item">Register</a>
+                                <a href="@Url.Action("Logout", "Account")" class="dropdown-item">Logout</a>
                             </div>
                         </div>
                     </div>
