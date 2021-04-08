@@ -1,13 +1,4 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    @await Html.PartialAsync("MetatagsPartial")
-    @await Html.PartialAsync("CssPartial")
-</head>
-
-<body>
-    @await Html.PartialAsync("BrandPartial")
-    @await Html.PartialAsync("NavBarPartial")
+﻿<body>
     <!-- Product Detail Start -->
     <div class="product-detail">
         <div class="container-fluid">
@@ -67,15 +58,8 @@
                     </div>
                 </div>
                 @await Html.PartialAsync("SideBarPartial")
-
             </div>
         </div>
     </div>
-
     <!-- Product Detail End -->
-    @await Html.PartialAsync("FooterPartial")
-    <!-- Back to Top -->
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-    @await Html.PartialAsync("ScriptsPartial")
 </body>
-</html>
