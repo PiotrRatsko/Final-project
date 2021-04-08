@@ -5,28 +5,25 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="login-form">
-                        <div class="row">
-
-                            <a asp-action="Register" asp-controller="Account">Регистрация</a>
+                            @*<a asp-action="Register" asp-controller="Account">Регистрация</a>*@
                             <form asp-action="Login" asp-controller="Account" asp-anti-forgery="true">
                                 <div class="validation" asp-validation-summary="ModelOnly"></div>
                                 <div>
                                     <div class="col-md-6">
-                                        <label asp-for="@Model.loginModel.Email">Введите Email</label>
-                                        <input type="text" asp-for="@Model.loginModel.Email" />
+                                        <label asp-for="@Model.loginModel.Email">E-mail</label>
+                                        <input class="form-control" type="text" placeholder="E-mail" asp-for="@Model.loginModel.Email" />
                                         <span asp-validation-for="@Model.loginModel.Email" />
                                     </div>
                                     <div class="col-md-6">
-                                        <label asp-for="@Model.loginModel.Password">Введите пароль</label>
-                                        <input asp-for="@Model.loginModel.Password" />
+                                        <label asp-for="@Model.loginModel.Password">Password</label>
+                                        <input class="form-control" type="text" placeholder="Password" asp-for="@Model.loginModel.Password" />
                                         <span asp-validation-for="@Model.loginModel.Password" />
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="submit" value="Войти" class="btn btn-outline-dark" />
+                                        <input type="submit" value="Submit" class="btn btn-outline-dark" />
                                     </div>
                                 </div>
                             </form>
-                        </div>
                     </div>
                 </div>
             </div>

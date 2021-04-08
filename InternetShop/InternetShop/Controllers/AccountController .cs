@@ -66,7 +66,7 @@ namespace InternetShop.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 else
-                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                    ModelState.AddModelError("", "Not valid password or/and e-mail");
             }
             return View(_dataManager.StoreService.Store);
         }
