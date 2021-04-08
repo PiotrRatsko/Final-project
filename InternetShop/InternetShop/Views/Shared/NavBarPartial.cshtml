@@ -17,10 +17,14 @@
                     <a href="/cart" class="btn cart">
                         <i class="fa fa-shopping-cart"></i><span>(@Model.Cart.TotalQuantity)</span>
                     </a>
-                    <div class="nav-item dropdown">
-                        <form action="@Url.Action("Login", "Account")">
-                            <button class="btn">LOGIN</button>
-                        </form>
+                    <div class="navbar-nav ml-auto">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Login & Register</a>
+                            <div class="dropdown-menu">
+                                <a href="@Url.Action("Login", "Account")" class="dropdown-item">Login</a>
+                                <a href="@Url.Action("Register", "Account")" class="dropdown-item">Register</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
