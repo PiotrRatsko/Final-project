@@ -18,9 +18,9 @@ namespace InternetShop.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            ViewBag.TotalSum = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalSum;
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
-            ViewBag.Products = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.CartItems;
+            ViewBag.TotalSum = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalSum;
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.Products = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.CartItems;
             return View();
         }
 

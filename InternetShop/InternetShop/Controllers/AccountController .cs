@@ -25,7 +25,7 @@ namespace InternetShop.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View(_loginModel);
         }
 
@@ -33,7 +33,7 @@ namespace InternetShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             if (ModelState.IsValid)
             {
                 User user = _dataManager.Repository.Store.Users.FirstOrDefault(u => u.Email == loginModel.Email && u.Password == loginModel.Password);
@@ -50,7 +50,7 @@ namespace InternetShop.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View(_registerModel);
         }
 
@@ -58,7 +58,7 @@ namespace InternetShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel registerModel)
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             if (ModelState.IsValid)
             {
                 User user = _dataManager.Repository.Store.Users.FirstOrDefault(u => u.Email == registerModel.Email);

@@ -16,16 +16,16 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index(Guid guid)
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             ViewBag.Product = _dataManager.Repository.GetProductById(guid);
-            ViewBag.AllProducts = _dataManager.Repository.Store.Products;
+            ViewBag.AllProducts = _dataManager.Repository.GetFilteredProducts(null, null, null);
 
-            ViewBag.BMW_Count = _dataManager.Repository.Store.Products.Where(i => i.Brand.Equals("BMW", StringComparison.OrdinalIgnoreCase)).Count();
-            ViewBag.Honda_Count = _dataManager.Repository.Store.Products.Where(i => i.Brand.Equals("Honda", StringComparison.OrdinalIgnoreCase)).Count();
-            ViewBag.Minsk_Count = _dataManager.Repository.Store.Products.Where(i => i.Brand.Equals("Minsk", StringComparison.OrdinalIgnoreCase)).Count();
-            ViewBag.SushiVesla_Count = _dataManager.Repository.Store.Products.Where(i => i.Brand.Equals("SushiVesla", StringComparison.OrdinalIgnoreCase)).Count();
-            ViewBag.Sushitime_Count = _dataManager.Repository.Store.Products.Where(i => i.Brand.Equals("Sushitime", StringComparison.OrdinalIgnoreCase)).Count();
-            ViewBag.TokiNY_Count = _dataManager.Repository.Store.Products.Where(i => i.Brand.Equals("TokiNY", StringComparison.OrdinalIgnoreCase)).Count();
+            ViewBag.BMW_Count = _dataManager.Repository.GetFilteredProducts(null, null, "BMW").Count;
+            ViewBag.Honda_Count = _dataManager.Repository.GetFilteredProducts(null, null, "Honda").Count;
+            ViewBag.Minsk_Count = _dataManager.Repository.GetFilteredProducts(null, null, "Minsk").Count;
+            ViewBag.SushiVesla_Count = _dataManager.Repository.GetFilteredProducts(null, null, "SushiVesla").Count;
+            ViewBag.Sushitime_Count = _dataManager.Repository.GetFilteredProducts(null, null, "Sushitime").Count;
+            ViewBag.TokiNY_Count = _dataManager.Repository.GetFilteredProducts(null, null, "TokiNY").Count;
             return View();
         }
 

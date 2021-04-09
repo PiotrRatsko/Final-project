@@ -1,6 +1,8 @@
 ﻿using InternetShop.Domain;
 using InternetShop.Domain.Repositories;
+using InternetShop.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace InternetShop.Controllers
 {
@@ -11,10 +13,25 @@ namespace InternetShop.Controllers
         {
             _dataManager = dataManager;
         }
+
+        [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(EmailModel emailModel)
+        {
+            if (ModelState.IsValid)
+            {
+                //EmailService emailService = new EmailService();
+                //await emailService.SendEmailAsync("green@tut.by", "Тема письма kkkkkk", "Тест письма: тест!");
+                ModelState.AddModelError("", "Letter was sent");
+            }
+
+            return View(emailModel);
         }
     }
 }

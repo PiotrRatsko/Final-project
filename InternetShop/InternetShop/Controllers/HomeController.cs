@@ -24,9 +24,9 @@ namespace InternetShop.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Motos = _dataManager.Repository.Store.Products.Where(prd => prd.Category.Equals("moto", StringComparison.OrdinalIgnoreCase));
-            ViewBag.Suhies = _dataManager.Repository.Store.Products.Where(prd => prd.Category.Equals("sushi", StringComparison.OrdinalIgnoreCase));
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.Motos = _dataManager.Repository.GetFilteredProducts("moto", null, null);
+            ViewBag.Suhies = _dataManager.Repository.GetFilteredProducts("sushi", null, null);
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View();
         }
 
