@@ -1,31 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using InternetShop.Domain;
-using System.Linq;
+using InternetShop.Domain.Repositories;
 
 namespace InternetShop.Controllers
 {
     public class ProductsController : Controller
     {
-        readonly DataManager _dataManager;
-        public ProductsController(DataManager dataManager)
+        readonly IStoreRepository _repo;
+        public ProductsController(IStoreRepository repo)
         {
-            _dataManager = dataManager;
+            _repo = repo;
         }
         public IActionResult Index(string category, string price, string brand)
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
-            ViewBag.AllProducts = _dataManager.Repository.Store.Products;
-            ViewBag.Products = _dataManager.Repository.GetFilteredProducts(category, price, brand);
+            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.AllProducts = _repo.GetFilteredProducts(null, null, null);
+            ViewBag.Products = _repo.GetFilteredProducts(category, price, brand);
             ViewData["Category"] = category;
             ViewData["Price"] = price;
             ViewData["Brand"] = brand;
-            ViewBag.BMW_Count = _dataManager.Repository.Store.Products.Where(i => i.Brand.Equals("BMW", StringComparison.OrdinalIgnoreCase)).Count();
-            ViewBag.Honda_Count = _dataManager.Repository.Store.Products.Where(i => i.Brand.Equals("Honda", StringComparison.OrdinalIgnoreCase)).Count();
-            ViewBag.Minsk_Count = _dataManager.Repository.Store.Products.Where(i => i.Brand.Equals("Minsk", StringComparison.OrdinalIgnoreCase)).Count();
-            ViewBag.SushiVesla_Count = _dataManager.Repository.Store.Products.Where(i => i.Brand.Equals("SushiVesla", StringComparison.OrdinalIgnoreCase)).Count();
-            ViewBag.Sushitime_Count = _dataManager.Repository.Store.Products.Where(i => i.Brand.Equals("Sushitime", StringComparison.OrdinalIgnoreCase)).Count();
-            ViewBag.TokiNY_Count = _dataManager.Repository.Store.Products.Where(i => i.Brand.Equals("TokiNY", StringComparison.OrdinalIgnoreCase)).Count();
+            ViewBag.BMW_Count = _repo.GetFilteredProducts(null, null, "BMW").Count;
+            ViewBag.Honda_Count = _repo.GetFilteredProducts(null, null, "Honda").Count;
+            ViewBag.Minsk_Count = _repo.GetFilteredProducts(null, null, "Minsk").Count;
+            ViewBag.SushiVesla_Count = _repo.GetFilteredProducts(null, null, "SushiVesla").Count;
+            ViewBag.Sushitime_Count = _repo.GetFilteredProducts(null, null, "Sushitime").Count;
+            ViewBag.TokiNY_Count = _repo.GetFilteredProducts(null, null, "TokiNY").Count;
             return View();
         }
         public IActionResult Add2Cart(Guid guid, string category, string price, string brand)
@@ -34,7 +33,7 @@ namespace InternetShop.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            _dataManager.Repository.AddToCart(guid, User.Identity.Name);
+            _repo.AddToCart(guid, User.Identity.Name);
             return RedirectToAction("Index", "Products", new { category, price, brand });
         }
     }

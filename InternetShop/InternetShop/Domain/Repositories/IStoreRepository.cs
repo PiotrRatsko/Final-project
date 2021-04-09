@@ -7,7 +7,9 @@ namespace InternetShop.Domain.Repositories
     public interface IStoreRepository
     {
         public Store Store { get; set; }
-        public User GetUser(string email);
+        public User GetUserByEmail(string email);
+        public User GetUserByEmailAndPassword(string email, string password);
+        public void AddUser(User user);
         public Product GetProductById(Guid guid);
         public List<Product> GetFilteredProducts(string category, string price, string brand);
         public void AddToCart(Guid guid, string email);
