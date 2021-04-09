@@ -15,6 +15,8 @@ namespace InternetShop.Controllers
     public class AccountController : Controller
     {
         readonly DataManager _dataManager;
+        readonly LoginModel _loginModel;
+        readonly RegisterModel _registerModel;
         public AccountController(DataManager dataManager)
         {
             _dataManager = dataManager;
@@ -23,16 +25,18 @@ namespace InternetShop.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View(_dataManager.StoreRepository.Store);
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            return View(_loginModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
             if (ModelState.IsValid)
             {
-                User user = _dataManager.StoreRepository.Store.Users.FirstOrDefault(u => u.Email == loginModel.Email && u.Password == loginModel.Password);
+                User user = _dataManager.Repository.Store.Users.FirstOrDefault(u => u.Email == loginModel.Email && u.Password == loginModel.Password);
                 if (user != null)
                 {
                     await Authenticate(loginModel.Email); // аутентификация
@@ -41,25 +45,27 @@ namespace InternetShop.Controllers
                 }
                 ModelState.AddModelError("", "Not valid password or/and e-mail");
             }
-            return View(_dataManager.StoreRepository.Store);
+            return View(_loginModel);
         }
         [HttpGet]
         public IActionResult Register()
         {
-            return View(_dataManager.StoreRepository.Store);
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            return View(_registerModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel registerModel)
         {
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
             if (ModelState.IsValid)
             {
-                User user = _dataManager.StoreRepository.Store.Users.FirstOrDefault(u => u.Email == registerModel.Email);
+                User user = _dataManager.Repository.Store.Users.FirstOrDefault(u => u.Email == registerModel.Email);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    _dataManager.StoreRepository.Store.Users.Add(new User { Email = registerModel.Email, Password = registerModel.Password });
+                    _dataManager.Repository.Store.Users.Add(new User { Email = registerModel.Email, Password = registerModel.Password });
 
                     await Authenticate(registerModel.Email); // аутентификация
 
@@ -68,7 +74,7 @@ namespace InternetShop.Controllers
                 else
                     ModelState.AddModelError("", "Not valid password or/and e-mail");
             }
-            return View(_dataManager.StoreRepository.Store);
+            return View(_registerModel);
         }
 
         private async Task Authenticate(string userName)

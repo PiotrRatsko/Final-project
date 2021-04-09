@@ -6,7 +6,7 @@
                 <h1>Moto</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
-                @foreach (var item in Model.Products.Where(prd => prd.Category.Equals("moto", StringComparison.OrdinalIgnoreCase)))
+                @foreach (var item in @ViewBag.Motos)
                 {
                     <div class="col-lg-3">
                         <div class="product-item">
@@ -36,7 +36,7 @@
                 <h1>Sushi</h1>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
-                @foreach (var item in Model.Products.Where(prd => prd.Category.Equals("sushi", StringComparison.OrdinalIgnoreCase)))
+                @foreach (var item in @ViewBag.Suhies)
                 {
                     <div class="col-lg-3">
                         <div class="product-item">

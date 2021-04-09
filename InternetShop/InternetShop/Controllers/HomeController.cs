@@ -1,9 +1,10 @@
 ﻿using InternetShop.Domain;
-using InternetShop.Domain.Repositories;
-using InternetShop.Models;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace InternetShop.Controllers
 {
@@ -15,9 +16,18 @@ namespace InternetShop.Controllers
             _dataManager = dataManager;
         }
 
+        public async Task<IActionResult> Error()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
+        }
+
         public IActionResult Index()
         {
-            return View(_dataManager.StoreRepository.Store);
+            ViewBag.Motos = _dataManager.Repository.Store.Products.Where(prd => prd.Category.Equals("moto", StringComparison.OrdinalIgnoreCase));
+            ViewBag.Suhies = _dataManager.Repository.Store.Products.Where(prd => prd.Category.Equals("sushi", StringComparison.OrdinalIgnoreCase));
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            return View();
         }
 
         public IActionResult Add2Cart(Guid guid)
@@ -26,7 +36,7 @@ namespace InternetShop.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            _dataManager.StoreRepository.AddToCart(guid);
+            _dataManager.Repository.AddToCart(guid, User.Identity.Name);
             return RedirectToAction("Index", "Home");
         }
     }

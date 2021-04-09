@@ -13,7 +13,8 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index()
         {
-            return View(_dataManager.StoreRepository.Store);
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            return View();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿<body>
+﻿@model InternetShop.Models.LoginModel
+<body>
     <!-- Login Start -->
     <div class="login">
         <div class="container-fluid">
@@ -11,12 +12,12 @@
                             <div>
                                 <div class="col-md-6">
                                     <label>Please login or register</label>
-                                    <input class="form-control" type="text" placeholder="E-mail" asp-for="@Model.loginModel.Email" />
-                                    <span asp-validation-for="@Model.loginModel.Email" />
+                                    <input class="form-control" type="text" placeholder="E-mail" asp-for="Email" />
+                                    <span asp-validation-for="Email" />
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control" type="text" placeholder="Password" asp-for="@Model.loginModel.Password" />
-                                    <span asp-validation-for="@Model.loginModel.Password" />
+                                    <input class="form-control" type="text" placeholder="Password" asp-for="Password" />
+                                    <span asp-validation-for="Password" />
                                 </div>
                                 <div class="col-md-12">
                                     <input type="submit" value="Submit" class="btn btn-outline-dark" />
