@@ -1,6 +1,6 @@
-﻿using InternetShop.Domain.Repositories;
+﻿using InternetShop.Domain;
+using InternetShop.Domain.Repositories;
 using InternetShop.Models;
-using InternetShop.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -8,24 +8,18 @@ namespace InternetShop.Controllers
 {
     public class ContactController : Controller
     {
-        readonly IStoreRepository _repo;
-        public ContactController(IStoreRepository repo)
+        readonly DataManager _dataManager;
+        public ContactController(DataManager dataManager)
         {
-            _repo = repo;
+            _dataManager = dataManager;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View();
         }
-
-
-        //public IActionResult SendMessage()
-        //{
-        //    return View();
-        //}
 
         [HttpPost]
         public async Task<IActionResult> Index(EmailModel emailModel)

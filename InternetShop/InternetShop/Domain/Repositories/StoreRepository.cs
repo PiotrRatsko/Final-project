@@ -8,12 +8,7 @@ namespace InternetShop.Domain.Repositories
 {
     public class StoreRepository : IStoreRepository
     {
-        public StoreRepository()
-        {
-            if (Store == null) Store = SampleData.Initialize();
-        }
-
-        public Store Store { get; set; }
+        public Store Store { get; set; } = new Store();
 
         public void AddUser(User user)
         {
@@ -27,7 +22,7 @@ namespace InternetShop.Domain.Repositories
         public User GetUserByEmail(string email)
         {
             return Store.Users.Where(i => i.Email.Equals(email, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
-        }
+}
         public Product GetProductById(Guid guid)
         {
             return Store.Products.Where(prd => prd.Id.Equals(guid)).FirstOrDefault();
@@ -82,7 +77,5 @@ namespace InternetShop.Domain.Repositories
         {
             GetUserByEmail(email)?.Cart.CartItems.Remove(GetProductById(guid));
         }
-
-
     }
 }
