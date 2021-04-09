@@ -21,7 +21,7 @@ namespace InternetShop.Controllers
             ViewBag.TotalSum = _dataManager.StoreRepository.GetUser(User.Identity.Name)?.Cart.TotalSum;
             ViewBag.TotalQuantity = _dataManager.StoreRepository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
             ViewBag.Products = _dataManager.StoreRepository.GetUser(User.Identity.Name)?.Cart.CartItems;
-            return View(_dataManager.StoreRepository.Store);
+            return View();
         }
 
         public IActionResult PlusQuantity(Guid guid)

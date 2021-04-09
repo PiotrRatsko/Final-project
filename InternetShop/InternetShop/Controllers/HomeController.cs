@@ -1,11 +1,9 @@
 ﻿using InternetShop.Domain;
-using InternetShop.Domain.Repositories;
-using InternetShop.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace InternetShop.Controllers
@@ -26,8 +24,10 @@ namespace InternetShop.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Motos = _dataManager.StoreRepository.Store.Products.Where(prd => prd.Category.Equals("moto", StringComparison.OrdinalIgnoreCase));
+            ViewBag.Suhies = _dataManager.StoreRepository.Store.Products.Where(prd => prd.Category.Equals("sushi", StringComparison.OrdinalIgnoreCase));
             ViewBag.TotalQuantity = _dataManager.StoreRepository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
-            return View(_dataManager.StoreRepository.Store);
+            return View();
         }
 
         public IActionResult Add2Cart(Guid guid)
