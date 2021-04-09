@@ -15,8 +15,6 @@ namespace InternetShop.Controllers
     public class AccountController : Controller
     {
         readonly DataManager _dataManager;
-        readonly LoginModel _loginModel;
-        readonly RegisterModel _registerModel;
         public AccountController(DataManager dataManager)
         {
             _dataManager = dataManager;
@@ -26,7 +24,7 @@ namespace InternetShop.Controllers
         public IActionResult Login()
         {
             ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
-            return View(_loginModel);
+            return View();
         }
 
         [HttpPost]
@@ -45,13 +43,13 @@ namespace InternetShop.Controllers
                 }
                 ModelState.AddModelError("", "Not valid password or/and e-mail");
             }
-            return View(_loginModel);
+            return View(loginModel);
         }
         [HttpGet]
         public IActionResult Register()
         {
             ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
-            return View(_registerModel);
+            return View();
         }
 
         [HttpPost]
@@ -74,7 +72,7 @@ namespace InternetShop.Controllers
                 else
                     ModelState.AddModelError("", "Not valid password or/and e-mail");
             }
-            return View(_registerModel);
+            return View(registerModel);
         }
 
         private async Task Authenticate(string userName)

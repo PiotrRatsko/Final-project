@@ -1,6 +1,7 @@
 ﻿using InternetShop.Domain;
 using InternetShop.Domain.Repositories;
 using InternetShop.Models;
+using InternetShop.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -26,8 +27,8 @@ namespace InternetShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                //EmailService emailService = new EmailService();
-                //await emailService.SendEmailAsync("green@tut.by", "Тема письма kkkkkk", "Тест письма: тест!");
+                EmailService emailService = new EmailService();
+                await emailService.SendEmailAsync(emailModel.Email, emailModel.Subject, emailModel.Message, emailModel.Name);
                 ModelState.AddModelError("", "Letter was sent");
             }
 
