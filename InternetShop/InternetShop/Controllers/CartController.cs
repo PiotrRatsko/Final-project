@@ -18,27 +18,27 @@ namespace InternetShop.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            ViewBag.TotalSum = _dataManager.StoreRepository.GetUser(User.Identity.Name)?.Cart.TotalSum;
-            ViewBag.TotalQuantity = _dataManager.StoreRepository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
-            ViewBag.Products = _dataManager.StoreRepository.GetUser(User.Identity.Name)?.Cart.CartItems;
+            ViewBag.TotalSum = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalSum;
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.Products = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.CartItems;
             return View();
         }
 
         public IActionResult PlusQuantity(Guid guid)
         {
-            _dataManager.StoreRepository.PlusQuantity(guid, User.Identity.Name);
+            _dataManager.Repository.PlusQuantity(guid, User.Identity.Name);
             return RedirectToAction("Index", "Cart");
         }
 
         public IActionResult MinusQuantity(Guid guid)
         {
-            _dataManager.StoreRepository.MinusQuantity(guid, User.Identity.Name);
+            _dataManager.Repository.MinusQuantity(guid, User.Identity.Name);
             return RedirectToAction("Index", "Cart");
         }
 
         public IActionResult RemoveProductFromCard(Guid guid)
         {
-            _dataManager.StoreRepository.RemoveProductFromCard(guid, User.Identity.Name);
+            _dataManager.Repository.RemoveProductFromCard(guid, User.Identity.Name);
             return RedirectToAction("Index", "Cart");
         }
     }

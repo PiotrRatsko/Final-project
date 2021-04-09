@@ -24,9 +24,9 @@ namespace InternetShop.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Motos = _dataManager.StoreRepository.Store.Products.Where(prd => prd.Category.Equals("moto", StringComparison.OrdinalIgnoreCase));
-            ViewBag.Suhies = _dataManager.StoreRepository.Store.Products.Where(prd => prd.Category.Equals("sushi", StringComparison.OrdinalIgnoreCase));
-            ViewBag.TotalQuantity = _dataManager.StoreRepository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.Motos = _dataManager.Repository.Store.Products.Where(prd => prd.Category.Equals("moto", StringComparison.OrdinalIgnoreCase));
+            ViewBag.Suhies = _dataManager.Repository.Store.Products.Where(prd => prd.Category.Equals("sushi", StringComparison.OrdinalIgnoreCase));
+            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
             return View();
         }
 
@@ -36,7 +36,7 @@ namespace InternetShop.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            _dataManager.StoreRepository.AddToCart(guid, User.Identity.Name);
+            _dataManager.Repository.AddToCart(guid, User.Identity.Name);
             return RedirectToAction("Index", "Home");
         }
     }

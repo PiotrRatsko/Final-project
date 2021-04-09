@@ -4,12 +4,12 @@ namespace InternetShop.Domain
 {
     public class DataManager
     {
-        public IStoreRepository StoreRepository { get; set; }
+        public IStoreRepository Repository { get; set; }
 
 
-        public DataManager(IStoreRepository storeRepository)
+        public DataManager(IStoreRepository IStoreRepository)
         {
-            StoreRepository = storeRepository;
+            Repository = IStoreRepository;
         }
     }
 }

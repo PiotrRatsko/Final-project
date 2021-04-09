@@ -16,7 +16,7 @@ namespace InternetShop
             {
                 var services = scope.ServiceProvider;
                 var service = services.GetRequiredService<DataManager>();
-                SampleData.Initialize(service.StoreRepository.Store);
+                SampleData.Initialize(service.Repository.Store);
             }
             host.Run();
         }
