@@ -1,19 +1,18 @@
-﻿using InternetShop.Domain;
+﻿using InternetShop.Domain.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace InternetShop.Controllers
 {
     public class HomeController : Controller
     {
-        readonly DataManager _dataManager;
-        public HomeController(DataManager dataManager)
+        readonly IStoreRepository _repo;
+        public HomeController(IStoreRepository repo)
         {
-            _dataManager = dataManager;
+            _repo = repo;
         }
 
         public async Task<IActionResult> Error()
@@ -24,9 +23,9 @@ namespace InternetShop.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Motos = _dataManager.Repository.Store.Products.Where(prd => prd.Category.Equals("moto", StringComparison.OrdinalIgnoreCase));
-            ViewBag.Suhies = _dataManager.Repository.Store.Products.Where(prd => prd.Category.Equals("sushi", StringComparison.OrdinalIgnoreCase));
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.Motos = _repo.GetFilteredProducts("moto", null, null);
+            ViewBag.Suhies = _repo.GetFilteredProducts("sushi", null, null);
+            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View();
         }
 
@@ -36,7 +35,7 @@ namespace InternetShop.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            _dataManager.Repository.AddToCart(guid, User.Identity.Name);
+            _repo.AddToCart(guid, User.Identity.Name);
             return RedirectToAction("Index", "Home");
         }
     }

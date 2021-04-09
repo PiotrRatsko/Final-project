@@ -1,19 +1,18 @@
-﻿using InternetShop.Domain;
-using InternetShop.Domain.Repositories;
+﻿using InternetShop.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InternetShop.Controllers
 {
     public class ContactController : Controller
     {
-        readonly DataManager _dataManager;
-        public ContactController(DataManager dataManager)
+        readonly IStoreRepository _repo;
+        public ContactController(IStoreRepository repo)
         {
-            _dataManager = dataManager;
+            _repo = repo;
         }
         public IActionResult Index()
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View();
         }
     }

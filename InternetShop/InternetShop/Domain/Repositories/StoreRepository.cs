@@ -8,12 +8,21 @@ namespace InternetShop.Domain.Repositories
 {
     public class StoreRepository : IStoreRepository
     {
-        public Store Store { get; set; } = new Store();
+        private Store Store { get; set; } = SampleData.Initialize();
 
-        public User GetUser(string email)
+        public void AddUser(User user)
+        {
+            Store.Users.Add(user);
+        }
+        public User GetUserByEmailAndPassword(string email, string password)
+        {
+            return Store.Users.Where(i => i.Email.Equals(email, StringComparison.OrdinalIgnoreCase) && i.Password.Equals(password, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+        }
+
+        public User GetUserByEmail(string email)
         {
             return Store.Users.Where(i => i.Email.Equals(email, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
-}
+        }
         public Product GetProductById(Guid guid)
         {
             return Store.Products.Where(prd => prd.Id.Equals(guid)).FirstOrDefault();
@@ -48,25 +57,27 @@ namespace InternetShop.Domain.Repositories
         public void AddToCart(Guid guid, string email)
         {
             Product prd = GetProductById(guid);
-            if (!GetUser(email).Cart.CartItems.ContainsKey(prd))
+            if (!GetUserByEmail(email).Cart.CartItems.ContainsKey(prd))
             {
-                GetUser(email)?.Cart.CartItems.Add(prd, 1);
+                GetUserByEmail(email)?.Cart.CartItems.Add(prd, 1);
             }
         }
 
         public void PlusQuantity(Guid guid, string email)
         {
-            GetUser(email).Cart.CartItems[GetProductById(guid)]++;
+            GetUserByEmail(email).Cart.CartItems[GetProductById(guid)]++;
         }
 
         public void MinusQuantity(Guid guid, string email)
         {
-            if (GetUser(email)?.Cart.CartItems[GetProductById(guid)] != 1) GetUser(email).Cart.CartItems[GetProductById(guid)]--;
+            if (GetUserByEmail(email)?.Cart.CartItems[GetProductById(guid)] != 1) GetUserByEmail(email).Cart.CartItems[GetProductById(guid)]--;
         }
 
         public void RemoveProductFromCard(Guid guid, string email)
         {
-            GetUser(email)?.Cart.CartItems.Remove(GetProductById(guid));
+            GetUserByEmail(email)?.Cart.CartItems.Remove(GetProductById(guid));
         }
+
+
     }
 }

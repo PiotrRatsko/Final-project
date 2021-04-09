@@ -4,13 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
-using System.Linq;
 
 namespace InternetShop
 {
     internal static class SampleData
     {
-        public static void Initialize(Store store)
+        public static Store Initialize()
         {
             string content;
             try
@@ -24,7 +23,7 @@ namespace InternetShop
                     ValidateItem(item);
                 }
 
-               store.Products = deserializedProduct.Products.Select(i => i).ToList();
+                return deserializedProduct;
             }
             catch (Exception ex)
             {
