@@ -17,7 +17,7 @@ namespace InternetShop
         {
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
             services.AddTransient<IStoreRepository, StoreRepository>();
-            services.AddSingleton<StoreRepository>();
+            services.AddSingleton<DataManager>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
