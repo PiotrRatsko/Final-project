@@ -15,7 +15,7 @@ namespace InternetShop.Controllers
         }
         public IActionResult Index(Guid guid)
         {
-            ViewBag.TotalQuantity = _dataManager.StoreRepository.Store.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _dataManager.StoreRepository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
             ViewBag.Product = _dataManager.StoreRepository.GetProductById(guid);
             return View(_dataManager.StoreRepository.Store);
         }
@@ -26,7 +26,7 @@ namespace InternetShop.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            _dataManager.StoreRepository.AddToCart(guid);
+            _dataManager.StoreRepository.AddToCart(guid, User.Identity.Name);
             return RedirectToAction("Index", "ProductDetail", new { guid });
         }
     }

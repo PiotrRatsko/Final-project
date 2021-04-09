@@ -18,26 +18,27 @@ namespace InternetShop.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            ViewBag.TotalQuantity = _dataManager.StoreRepository.Store.Cart.TotalQuantity;
-            ViewBag.Products = _dataManager.StoreRepository.Store.Cart.CartItems;
+            ViewBag.TotalSum = _dataManager.StoreRepository.GetUser(User.Identity.Name)?.Cart.TotalSum;
+            ViewBag.TotalQuantity = _dataManager.StoreRepository.GetUser(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.Products = _dataManager.StoreRepository.GetUser(User.Identity.Name)?.Cart.CartItems;
             return View(_dataManager.StoreRepository.Store);
         }
 
         public IActionResult PlusQuantity(Guid guid)
         {
-            _dataManager.StoreRepository.PlusQuantity(guid);
+            _dataManager.StoreRepository.PlusQuantity(guid, User.Identity.Name);
             return RedirectToAction("Index", "Cart");
         }
 
         public IActionResult MinusQuantity(Guid guid)
         {
-            _dataManager.StoreRepository.MinusQuantity(guid);
+            _dataManager.StoreRepository.MinusQuantity(guid, User.Identity.Name);
             return RedirectToAction("Index", "Cart");
         }
 
         public IActionResult RemoveProductFromCard(Guid guid)
         {
-            _dataManager.StoreRepository.RemoveProductFromCard(guid);
+            _dataManager.StoreRepository.RemoveProductFromCard(guid, User.Identity.Name);
             return RedirectToAction("Index", "Cart");
         }
     }

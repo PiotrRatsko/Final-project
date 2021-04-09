@@ -34,6 +34,11 @@ namespace InternetShop
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/home/Error");
+            }
+
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseRouting();
