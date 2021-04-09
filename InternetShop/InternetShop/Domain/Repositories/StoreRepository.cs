@@ -8,7 +8,12 @@ namespace InternetShop.Domain.Repositories
 {
     public class StoreRepository : IStoreRepository
     {
-        private Store Store { get; set; } = SampleData.Initialize();
+        public StoreRepository()
+        {
+            if (Store == null) Store = SampleData.Initialize();
+        }
+
+        public Store Store { get; set; }
 
         public void AddUser(User user)
         {

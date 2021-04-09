@@ -6,7 +6,7 @@ namespace InternetShop.Domain.Repositories
 {
     public interface IStoreRepository
     {
-        //public Store Store { get; set; }
+        public Store Store { get; set; }
         public User GetUserByEmail(string email);
         public User GetUserByEmailAndPassword(string email, string password);
         public void AddUser(User user);
