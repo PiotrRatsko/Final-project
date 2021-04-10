@@ -14,6 +14,7 @@ namespace InternetShop.Controllers
         {
             _dataManager = dataManager;
         }
+
         public IActionResult Index(Guid guid)
         {
             ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;

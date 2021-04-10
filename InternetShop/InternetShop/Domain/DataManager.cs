@@ -7,9 +7,9 @@ namespace InternetShop.Domain
         public IStoreRepository Repository { get; set; }
 
 
-        public DataManager(IStoreRepository IStoreRepository)
+        public DataManager(IStoreRepository repo)
         {
-            Repository = IStoreRepository;
+            Repository = repo;
         }
     }
 }
