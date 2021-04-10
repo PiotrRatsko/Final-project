@@ -1,7 +1,5 @@
-using InternetShop.Domain;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using InternetShop.Domain.Repositories;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -15,8 +13,7 @@ namespace InternetShop
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var service = services.GetRequiredService<DataManager>();
-                SampleData.Initialize(service.Repository.Store);
+                var service = services.GetRequiredService<IStoreRepository>();
             }
             host.Run();
         }

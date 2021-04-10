@@ -9,16 +9,16 @@ namespace InternetShop.Controllers
 {
     public class ContactController : Controller
     {
-        readonly DataManager _dataManager;
-        public ContactController(DataManager dataManager)
+        readonly IStoreRepository _repo;
+        public ContactController(IStoreRepository repo)
         {
-            _dataManager = dataManager;
+            _repo = repo;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View();
         }
 
