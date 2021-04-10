@@ -1,5 +1,4 @@
 ﻿using InternetShop.Domain.Entities;
-using InternetShop.Domain.Repositories;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,12 +11,6 @@ namespace InternetShop
     {
         public static List<Product> Initialize()
         {
-            //List<Product> PRD = new List<Product>();
-            //PRD.Add(new Product() { Name ="fff", Brand = "dd"});
-            //PRD.Add(new Product() { Name = "fff", Brand = "dd" });
-            //string jj = JsonConvert.SerializeObject(PRD);
-
-
             string content;
             try
             {

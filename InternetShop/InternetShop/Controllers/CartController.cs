@@ -1,6 +1,4 @@
-﻿using InternetShop.Domain;
-using InternetShop.Domain.Entities;
-using InternetShop.Domain.Repositories;
+﻿using InternetShop.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 

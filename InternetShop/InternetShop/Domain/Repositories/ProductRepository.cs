@@ -8,12 +8,11 @@ namespace InternetShop.Domain.Repositories
 {
     public class ProductRepository : IProductRepository
     {
+        private static List<Product> Products { get; set; }
         public ProductRepository()
         {
             if (Products == null) Products = SampleData.Initialize();
         }
-
-        private static List<Product> Products { get; set; }
 
         public Product GetProductById(Guid guid)
         {
@@ -42,7 +41,6 @@ namespace InternetShop.Domain.Repositories
             {
                 prod = prod.Where(prd => prd.Brand.Equals(brand, StringComparison.OrdinalIgnoreCase)).ToList();
             }
-
             return prod;
         }
     }

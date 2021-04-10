@@ -1,5 +1,4 @@
-﻿using InternetShop.Domain;
-using InternetShop.Domain.Repositories;
+﻿using InternetShop.Domain.Repositories;
 using InternetShop.Models;
 using InternetShop.Service;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +30,6 @@ namespace InternetShop.Controllers
                 await emailService.SendEmailAsync(emailModel.Email, emailModel.Subject, emailModel.Message, emailModel.Name);
                 ModelState.AddModelError("", "Letter was sent");
             }
-
             return View(emailModel);
         }
     }

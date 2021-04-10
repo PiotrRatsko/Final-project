@@ -1,11 +1,8 @@
-﻿using InternetShop.Domain;
-using InternetShop.Domain.Entities;
-using InternetShop.Domain.Repositories;
+﻿using InternetShop.Domain.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace InternetShop.Controllers

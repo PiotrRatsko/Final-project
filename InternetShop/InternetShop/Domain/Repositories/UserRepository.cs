@@ -8,7 +8,6 @@ namespace InternetShop.Domain.Repositories
     public class UserRepository : IUserRepository
     {
         private static List<User> Users { get; set; } = new List<User>();
-
         public void AddUser(User user)
         {
             Users.Add(user);

@@ -1,9 +1,6 @@
-﻿using InternetShop.Domain;
-using InternetShop.Domain.Repositories;
-using InternetShop.Models;
+﻿using InternetShop.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Linq;
 
 namespace InternetShop.Controllers
 {

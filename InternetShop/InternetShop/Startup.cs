@@ -1,4 +1,3 @@
-using InternetShop.Domain;
 using InternetShop.Domain.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;

@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using InternetShop.Domain;
-using System.Linq;
 using InternetShop.Domain.Repositories;
 
 namespace InternetShop.Controllers
@@ -15,6 +13,7 @@ namespace InternetShop.Controllers
             _product = product;
             _user = user;
         }
+
         public IActionResult Index(string category, string price, string brand)
         {
             ViewBag.TotalQuantity = _user.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;

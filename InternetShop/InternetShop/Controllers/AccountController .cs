@@ -1,13 +1,10 @@
-﻿using InternetShop.Domain;
-using InternetShop.Domain.Entities;
+﻿using InternetShop.Domain.Entities;
 using InternetShop.Domain.Repositories;
 using InternetShop.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -48,6 +45,7 @@ namespace InternetShop.Controllers
             }
             return View(loginModel);
         }
+
         [HttpGet]
         public IActionResult Register()
         {
