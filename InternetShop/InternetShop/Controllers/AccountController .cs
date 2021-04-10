@@ -15,16 +15,18 @@ namespace InternetShop.Controllers
 {
     public class AccountController : Controller
     {
-        readonly IStoreRepository _repo;
-        public AccountController(IStoreRepository repo)
+        readonly IProductRepository _product;
+        readonly IUserRepository _user;
+        public AccountController(IProductRepository product, IUserRepository user)
         {
-            _repo = repo;
+            _product = product;
+            _user = user;
         }
 
         [HttpGet]
         public IActionResult Login()
         {
-            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _user.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View();
         }
 
@@ -32,10 +34,10 @@ namespace InternetShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
-            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _user.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             if (ModelState.IsValid)
             {
-                User user = _repo.GetUserByEmailAndPassword(loginModel.Email, loginModel.Password);
+                User user = _user.GetUserByEmailAndPassword(loginModel.Email, loginModel.Password);
                 if (user != null)
                 {
                     await Authenticate(loginModel.Email); // аутентификация
@@ -49,7 +51,7 @@ namespace InternetShop.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _user.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View();
         }
 
@@ -57,14 +59,14 @@ namespace InternetShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel registerModel)
         {
-            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _user.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             if (ModelState.IsValid)
             {
-                User user = _repo.GetUserByEmail(registerModel.Email);
+                User user = _user.GetUserByEmail(registerModel.Email);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    _repo.AddUser(new User { Email = registerModel.Email, Password = registerModel.Password });
+                    _user.AddUser(new User { Email = registerModel.Email, Password = registerModel.Password });
 
                     await Authenticate(registerModel.Email); // аутентификация
 

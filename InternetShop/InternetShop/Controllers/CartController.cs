@@ -7,38 +7,41 @@ namespace InternetShop.Controllers
 {
     public class CartController : Controller
     {
-        readonly IStoreRepository _repo;
-        public CartController(IStoreRepository repo)
+        readonly IProductRepository _product;
+        readonly IUserRepository _user;
+        public CartController(IProductRepository product, IUserRepository user)
         {
-            _repo = repo;
+            _product = product;
+            _user = user;
         }
+
         public IActionResult Index()
         {
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
             }
-            ViewBag.TotalSum = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalSum;
-            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
-            ViewBag.Products = _repo.GetUserByEmail(User.Identity.Name)?.Cart.CartItems;
+            ViewBag.TotalSum = _user.GetUserByEmail(User.Identity.Name)?.Cart.TotalSum;
+            ViewBag.TotalQuantity = _user.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.Products = _user.GetUserByEmail(User.Identity.Name)?.Cart.CartItems;
             return View();
         }
 
         public IActionResult PlusQuantity(Guid guid)
         {
-            _repo.PlusQuantity(guid, User.Identity.Name);
+            _user.PlusQuantity(guid, User.Identity.Name);
             return RedirectToAction("Index", "Cart");
         }
 
         public IActionResult MinusQuantity(Guid guid)
         {
-            _repo.MinusQuantity(guid, User.Identity.Name);
+            _user.MinusQuantity(guid, User.Identity.Name);
             return RedirectToAction("Index", "Cart");
         }
 
         public IActionResult RemoveProductFromCard(Guid guid)
         {
-            _repo.RemoveProductFromCard(guid, User.Identity.Name);
+            // _repo.RemoveProductFromCard(guid, User.Identity.Name);
             return RedirectToAction("Index", "Cart");
         }
     }

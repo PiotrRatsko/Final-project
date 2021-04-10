@@ -1,4 +1,5 @@
 ﻿using InternetShop.Domain;
+using InternetShop.Domain.Entities;
 using InternetShop.Domain.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -11,10 +12,12 @@ namespace InternetShop.Controllers
 {
     public class HomeController : Controller
     {
-        readonly IStoreRepository _repo;
-        public HomeController(IStoreRepository repo)
+        readonly IProductRepository _product;
+        readonly IUserRepository _user;
+        public HomeController(IProductRepository product, IUserRepository user)
         {
-            _repo = repo;
+            _product = product;
+            _user = user;
         }
 
         public async Task<IActionResult> Error()
@@ -25,19 +28,19 @@ namespace InternetShop.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Motos = _repo.GetFilteredProducts("moto", null, null);
-            ViewBag.Suhies = _repo.GetFilteredProducts("sushi", null, null);
-            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.Motos = _product.GetFilteredProducts("moto", null, null);
+            ViewBag.Suhies = _product.GetFilteredProducts("sushi", null, null);
+            ViewBag.TotalQuantity = _user.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View();
         }
 
-        public IActionResult Add2Cart(Guid guid)
+        public IActionResult Add2Cart(Product product)
         {
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
             }
-            _repo.AddToCart(guid, User.Identity.Name);
+            _user.AddToCart(product, User.Identity.Name);
             return RedirectToAction("Index", "Home");
         }
     }
