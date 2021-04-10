@@ -1,5 +1,6 @@
 ﻿using InternetShop.Domain;
 using InternetShop.Domain.Entities;
+using InternetShop.Domain.Repositories;
 using InternetShop.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -14,16 +15,16 @@ namespace InternetShop.Controllers
 {
     public class AccountController : Controller
     {
-        readonly DataManager _dataManager;
-        public AccountController(DataManager dataManager)
+        readonly IStoreRepository _repo;
+        public AccountController(IStoreRepository repo)
         {
-            _dataManager = dataManager;
+            _repo = repo;
         }
 
         [HttpGet]
         public IActionResult Login()
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View();
         }
 
@@ -31,10 +32,10 @@ namespace InternetShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             if (ModelState.IsValid)
             {
-                User user = _dataManager.Repository.Store.Users.FirstOrDefault(u => u.Email == loginModel.Email && u.Password == loginModel.Password);
+                User user = _repo.GetUserByEmailAndPassword(loginModel.Email, loginModel.Password);
                 if (user != null)
                 {
                     await Authenticate(loginModel.Email); // аутентификация
@@ -48,7 +49,7 @@ namespace InternetShop.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             return View();
         }
 
@@ -56,14 +57,14 @@ namespace InternetShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel registerModel)
         {
-            ViewBag.TotalQuantity = _dataManager.Repository.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _repo.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             if (ModelState.IsValid)
             {
-                User user = _dataManager.Repository.Store.Users.FirstOrDefault(u => u.Email == registerModel.Email);
+                User user = _repo.GetUserByEmail(registerModel.Email);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    _dataManager.Repository.Store.Users.Add(new User { Email = registerModel.Email, Password = registerModel.Password });
+                    _repo.AddUser(new User { Email = registerModel.Email, Password = registerModel.Password });
 
                     await Authenticate(registerModel.Email); // аутентификация
 
