@@ -34,13 +34,13 @@ namespace InternetShop.Controllers
             return View();
         }
 
-        public IActionResult Add2Cart(Product product)
+        public IActionResult Add2Cart(Guid guid)
         {
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
             }
-            _user.AddToCart(product, User.Identity.Name);
+            _user.AddToCart(_product.GetProductById(guid), User.Identity.Name);
             return RedirectToAction("Index", "Home");
         }
     }

@@ -37,7 +37,7 @@ namespace InternetShop.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            //_repo.AddToCart(guid, User.Identity.Name);
+            _user.AddToCart(_product.GetProductById(guid), User.Identity.Name);
             return RedirectToAction("Index", "Products", new { category, price, brand });
         }
     }

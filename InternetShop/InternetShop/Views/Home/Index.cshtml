@@ -21,7 +21,7 @@
                             </div>
                             <div class="product-price">
                                 <h3><span>$</span>@item.Price</h3>
-                                <a class="btn" href="@Url.Action("Add2Cart", "Home", item as Product )"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                                <a class="btn" href="@Url.Action("Add2Cart", "Home", new {guid = item.Id } )"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
                             </div>
                         </div>
                     </div>

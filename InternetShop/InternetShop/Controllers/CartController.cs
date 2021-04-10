@@ -1,4 +1,5 @@
 ﻿using InternetShop.Domain;
+using InternetShop.Domain.Entities;
 using InternetShop.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -29,19 +30,19 @@ namespace InternetShop.Controllers
 
         public IActionResult PlusQuantity(Guid guid)
         {
-            _user.PlusQuantity(guid, User.Identity.Name);
+            _user.PlusQuantity(_product.GetProductById(guid), User.Identity.Name);
             return RedirectToAction("Index", "Cart");
         }
 
         public IActionResult MinusQuantity(Guid guid)
         {
-            _user.MinusQuantity(guid, User.Identity.Name);
+            _user.MinusQuantity(_product.GetProductById(guid), User.Identity.Name);
             return RedirectToAction("Index", "Cart");
         }
 
         public IActionResult RemoveProductFromCard(Guid guid)
         {
-            // _repo.RemoveProductFromCard(guid, User.Identity.Name);
+            _user.RemoveProductFromCard(_product.GetProductById(guid), User.Identity.Name);
             return RedirectToAction("Index", "Cart");
         }
     }
