@@ -9,16 +9,16 @@ namespace InternetShop
 {
     internal static class SampleData
     {
-        public static Store Initialize()
+        public static List<Product> Initialize()
         {
             string content;
             try
             {
                 using (StreamReader reader = File.OpenText(@"SampleData.json"))
                     content = reader.ReadToEnd();
-                Store deserializedProduct = JsonConvert.DeserializeObject<Store>(content);
+                List<Product> deserializedProduct = JsonConvert.DeserializeObject<List<Product>>(content);
 
-                foreach (var item in deserializedProduct.Products)
+                foreach (var item in deserializedProduct)
                 {
                     ValidateItem(item);
                 }

@@ -12,7 +12,6 @@ namespace InternetShop.Service
         public async Task SendEmailAsync(string email, string subject, string message, string name)
         {
             var emailMessage = new MimeMessage();
-
             emailMessage.From.Add(new MailboxAddress("sushimoto", ""));
             emailMessage.To.Add(new MailboxAddress("", email));
             emailMessage.Subject = subject;
