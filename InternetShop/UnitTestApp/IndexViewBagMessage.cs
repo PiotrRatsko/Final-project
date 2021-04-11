@@ -24,12 +24,13 @@ namespace UnitTestApp
             var mockProduct = new Mock<IProductRepository>();
             var mockUser = new Mock<IUserRepository>();
             mockProduct.Setup(repo => repo.GetFilteredProducts(null, null, null)).Returns(GetFilteredProducts_Test());
-            mockUser.Setup(repo => repo.GetUserByEmail("User")).Returns(GetUserByEmail_Test());
+            mockUser.Setup(repo => repo.GetUserByEmail("User").Cart.TotalQuantity).Returns(TotalQuantity_Test());
             var controller = new HomeController(mockProduct.Object, mockUser.Object);
 
             // Act
             var result = controller.Index();
             ViewResult result2 = controller.Index() as ViewResult;
+            var i = result2.ViewData.Values;
 
             // Assert
             Assert.IsInstanceOf<ViewResult>(result);
@@ -45,9 +46,21 @@ namespace UnitTestApp
             };
         }
 
-        private User GetUserByEmail_Test()
+        private int TotalQuantity_Test()
         {
-            return new User();
+            User user = new User()
+            {
+                Email = "TestEmail",
+                Password = "TestPassword",
+                Cart = new Cart()
+                {
+                    CartItems = new Dictionary<Product, int>()
+                    {
+                        { new Product() { Name = "TestName1", Brand = "TestBrand1", Category = "TestCategory", Description = "TestDescription1", Id = new Guid("aa1a1111-a1a1-11a1-1111-1a1111aa1111"), Picter = "TestPicter1", Price = 1 }, 1 }
+                    },
+                }
+            };
+            return user.Cart.TotalQuantity;
         }
     }
 }
