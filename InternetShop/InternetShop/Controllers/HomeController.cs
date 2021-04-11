@@ -27,7 +27,7 @@ namespace InternetShop.Controllers
         {
             ViewBag.Motos = _product.GetFilteredProducts("moto", null, null);
             ViewBag.Suhies = _product.GetFilteredProducts("sushi", null, null);
-            ViewBag.TotalQuantity = _user.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
+            ViewBag.TotalQuantity = _user.GetUserByEmail(User?.Identity.Name)?.Cart.TotalQuantity;
             return View();
         }
 
