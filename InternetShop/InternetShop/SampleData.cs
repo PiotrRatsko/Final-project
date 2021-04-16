@@ -30,6 +30,7 @@ namespace InternetShop
                 throw new Exception($"Context was not initialized, {ex}");
             }
         }
+
         private static void ValidateItem(Product item)
         {
             var results = new List<ValidationResult>();
