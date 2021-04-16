@@ -11,11 +11,6 @@ namespace UnitTestApp
 {
     public class HomeController_Tests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         public void HomeController_Index_Tests()
         {
@@ -33,6 +28,7 @@ namespace UnitTestApp
             Assert.IsInstanceOf<ViewResult>(result);
             Assert.AreEqual(3, (result as ViewResult).ViewData.Count);
         }
+
         private List<Product> GetFilteredProducts_Test()
         {
             return new List<Product>()

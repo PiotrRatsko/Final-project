@@ -3,7 +3,6 @@
 namespace InternetShop.Models
 {
     public class EmailModel
-
     {
         [Required(ErrorMessage = "Please add Email")]
         [EmailAddress(ErrorMessage = "Email is not valid")]
