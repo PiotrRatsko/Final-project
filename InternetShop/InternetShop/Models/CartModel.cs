@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace InternetShop.Domain.Entities
 {
-    public class Cart
+    public class CartModel
     {
-        public Dictionary<Product, int> CartItems { get; set; } = new Dictionary<Product, int>();
+        public Dictionary<ProductModel, int> CartItems { get; set; } = new Dictionary<ProductModel, int>();
         public int TotalQuantity => CartItems.Count;
         public int TotalSum => CartItems.Select(x => x.Key.Price * x.Value).Sum();
     }

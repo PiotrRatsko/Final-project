@@ -29,26 +29,26 @@ namespace UnitTestApp
             Assert.AreEqual(3, (result as ViewResult).ViewData.Count);
         }
 
-        private List<Product> GetFilteredProducts_Test()
+        private List<ProductModel> GetFilteredProducts_Test()
         {
-            return new List<Product>()
+            return new List<ProductModel>()
             {
-                new Product() { Name = "TestName1", Brand = "TestBrand1", Category = "TestCategory1", Description = "TestDescription1", Id = new Guid("aa1a1111-a1a1-11a1-1111-1a1111aa1111"), Picter = "TestPicter1", Price = 1 },
-                new Product() { Name = "TestName2", Brand = "TestBrand2", Category = "TestCategory2", Description = "TestDescription2", Id = new Guid("aa1a1111-a1a1-11a1-1111-1a1111aa1112"), Picter = "TestPicter2", Price = 2 }
+                new ProductModel() { Name = "TestName1", Brand = "TestBrand1", Category = "TestCategory1", Description = "TestDescription1", Id = new Guid("aa1a1111-a1a1-11a1-1111-1a1111aa1111"), Picter = "TestPicter1", Price = 1 },
+                new ProductModel() { Name = "TestName2", Brand = "TestBrand2", Category = "TestCategory2", Description = "TestDescription2", Id = new Guid("aa1a1111-a1a1-11a1-1111-1a1111aa1112"), Picter = "TestPicter2", Price = 2 }
             };
         }
 
-        private User GetUserByEmail_Test()
+        private UserModel GetUserByEmail_Test()
         {
-            User user = new User()
+            UserModel user = new UserModel()
             {
                 Email = "TestEmail",
                 Password = "TestPassword",
-                Cart = new Cart()
+                Cart = new CartModel()
                 {
-                    CartItems = new Dictionary<Product, int>()
+                    CartItems = new Dictionary<ProductModel, int>()
                     {
-                        { new Product() { Name = "TestName1", Brand = "TestBrand1", Category = "TestCategory", Description = "TestDescription1", Id = new Guid("aa1a1111-a1a1-11a1-1111-1a1111aa1111"), Picter = "TestPicter1", Price = 1 }, 1 }
+                        { new ProductModel() { Name = "TestName1", Brand = "TestBrand1", Category = "TestCategory", Description = "TestDescription1", Id = new Guid("aa1a1111-a1a1-11a1-1111-1a1111aa1111"), Picter = "TestPicter1", Price = 1 }, 1 }
                     },
                 }
             };

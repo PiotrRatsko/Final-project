@@ -8,20 +8,20 @@ namespace InternetShop.Domain.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private static List<Product> Products { get; set; }
+        private static List<ProductModel> Products { get; set; }
         public ProductRepository()
         {
             if (Products == null) Products = SampleData.Initialize();
         }
 
-        public Product GetProductById(Guid guid)
+        public ProductModel GetProductById(Guid guid)
         {
             return Products.Where(prd => prd.Id.Equals(guid)).FirstOrDefault();
         }
 
-        public List<Product> GetFilteredProducts(string category, string price, string brand)
+        public List<ProductModel> GetFilteredProducts(string category, string price, string brand)
         {
-            List<Product> prod = Products.Select(i => i).ToList();
+            List<ProductModel> prod = Products.Select(i => i).ToList();
 
             if (!string.IsNullOrEmpty(category))
             {

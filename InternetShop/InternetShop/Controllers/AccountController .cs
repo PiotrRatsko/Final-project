@@ -34,7 +34,7 @@ namespace InternetShop.Controllers
             ViewBag.TotalQuantity = _user.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             if (ModelState.IsValid)
             {
-                User user = _user.GetUserByEmailAndPassword(loginModel.Email, loginModel.Password);
+                UserModel user = _user.GetUserByEmailAndPassword(loginModel.Email, loginModel.Password);
                 if (user != null)
                 {
                     await Authenticate(loginModel.Email); // аутентификация
@@ -60,11 +60,11 @@ namespace InternetShop.Controllers
             ViewBag.TotalQuantity = _user.GetUserByEmail(User.Identity.Name)?.Cart.TotalQuantity;
             if (ModelState.IsValid)
             {
-                User user = _user.GetUserByEmail(registerModel.Email);
+                UserModel user = _user.GetUserByEmail(registerModel.Email);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    _user.AddUser(new User { Email = registerModel.Email, Password = registerModel.Password });
+                    _user.AddUser(new UserModel { Email = registerModel.Email, Password = registerModel.Password });
 
                     await Authenticate(registerModel.Email); // аутентификация
 

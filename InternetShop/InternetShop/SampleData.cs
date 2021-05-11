@@ -9,14 +9,14 @@ namespace InternetShop
 {
     internal static class SampleData
     {
-        public static List<Product> Initialize()
+        public static List<ProductModel> Initialize()
         {
             string content;
             try
             {
                 using (StreamReader reader = File.OpenText(@"SampleData.json"))
                     content = reader.ReadToEnd();
-                List<Product> deserializedProduct = JsonConvert.DeserializeObject<List<Product>>(content);
+                List<ProductModel> deserializedProduct = JsonConvert.DeserializeObject<List<ProductModel>>(content);
 
                 foreach (var item in deserializedProduct)
                 {
@@ -31,7 +31,7 @@ namespace InternetShop
             }
         }
 
-        private static void ValidateItem(Product item)
+        private static void ValidateItem(ProductModel item)
         {
             var results = new List<ValidationResult>();
             var context = new ValidationContext(item);

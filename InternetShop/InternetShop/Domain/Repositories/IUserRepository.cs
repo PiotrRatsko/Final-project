@@ -4,12 +4,12 @@ namespace InternetShop.Domain.Repositories
 {
     public interface IUserRepository
     {
-        public User GetUserByEmail(string email);
-        public User GetUserByEmailAndPassword(string email, string password);
-        public void AddUser(User user);
-        public void AddToCart(Product product, string email);
-        public void PlusQuantity(Product product, string email);
-        public void MinusQuantity(Product product, string email);
-        public void RemoveProductFromCard(Product product, string email);
+        public UserModel GetUserByEmail(string email);
+        public UserModel GetUserByEmailAndPassword(string email, string password);
+        public void AddUser(UserModel user);
+        public void AddToCart(ProductModel product, string email);
+        public void PlusQuantity(ProductModel product, string email);
+        public void MinusQuantity(ProductModel product, string email);
+        public void RemoveProductFromCard(ProductModel product, string email);
     }
 }
