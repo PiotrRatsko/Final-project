@@ -28,7 +28,6 @@ namespace InternetShop.Controllers
             {
                 EmailService emailService = new EmailService();
                 await emailService.SendEmailAsync(emailModel.Email, emailModel.Subject, emailModel.Message, emailModel.Name);
-                ModelState.AddModelError("", "Letter was sent");
             }
             return View(emailModel);
         }
